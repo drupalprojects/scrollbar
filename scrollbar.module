@@ -1,0 +1,161 @@
+<?php
+
+/**
+  * Implement hook_help()
+  */
+
+function scrollbar_help($path, $arg) {
+  switch ($path) {
+  case 'admin/config/scrollbar':
+
+  $basePath = libraries_get_path('scrollbar');
+
+  $installed_1 = file_exists($basePath . '/js/jquery.jscrollpane.min.js');
+  $installed_2 = file_exists($basePath . '/css/jquery.jscrollpane.css');
+  
+  $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
+  <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
+  file into libraries/scrollbar/js folder.</p></div>');
+  
+  $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
+  <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
+  file into libraries/scrollbar/css folder.</p></div>');
+  
+  $lorem_ipsum = "<div class=demo-class style=\"overflow:auto;height:200px;width:200px\"><p>Lorem Ipsum demo content.<br />
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
+  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
+  fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
+  qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora 
+  incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
+  exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
+  eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+  eum fugiat quo voluptas nulla pariatur?</p></div>";
+  
+  if ($installed_1 && $installed_2) {
+  return $lorem_ipsum;
+  }
+  elseif (!$installed_1 && $installed_2) {
+  return $missing_1;
+  }
+  elseif ($installed_1 && !$installed_2) {
+  return $missing_2;
+  }
+  elseif (!$installed_1 && !$installed_2) {
+  return $missing_1 . "<br />" . $missing_2;
+  }
+ }
+}
+
+/*
+ * Apply settings for the scrollbar.
+ *
+ * This is what actually puts the settings for the scrollbar onto the page. It finds
+ * the settings and then compiles them into javascript settings that the jquery.jscrollpane.min.js file understands
+ *
+ */
+
+function scrollbar_inlineJS() {
+
+  $jscrollableElement = variable_get('scrollbar_scrollableElement', '.field-name-body');
+
+  $scrollbar_stuff  = "jQuery(function () { jQuery('$jscrollableElement, .demo-class').jScrollPane({ \n";
+
+  $scrollbar_stuff .= "showArrows: " . variable_get('scrollbar_showArrows', true) . ",\n";
+
+  $scrollbar_stuff .= "mouseWheelSpeed: " . variable_get('scrollbar_mouseWheelSpeed', 10) . ",\n";
+  $scrollbar_stuff .= "arrowButtonSpeed: " . variable_get('scrollbar_arrowButtonSpeed', 10) . ",\n";
+  $scrollbar_stuff .= "arrowRepeatFreq: " . variable_get('scrollbar_arrowRepeatFreq', 100) . ",\n";
+  
+  $scrollbar_stuff .= "horizontialGutter: " . variable_get('scrollbar_horizontialGutter', 4) . ",\n";
+  $scrollbar_stuff .= "verticalGutter: " . variable_get('scrollbar_verticalGutter', 4) . ",\n";
+
+  $scrollbar_stuff .= "verticalDragMinHeight: " . variable_get('scrollbar_verticalDragMinHeight', 0) . ",\n";
+  $scrollbar_stuff .= "verticalDragMaxHeight: " . variable_get('scrollbar_verticalDragMaxHeight', 99999) . ",\n";
+  $scrollbar_stuff .= "verticalDragMinWidth: " . variable_get('scrollbar_verticalDragMinWidth', 0) . ",\n";
+  $scrollbar_stuff .= "verticalDragMaxWidth: " . variable_get('scrollbar_verticalDragMaxWidth', 99999) . ",\n";
+  $scrollbar_stuff .= "horizontialDragMinHeight: " . variable_get('scrollbar_horizontialDragMinHeight', 0) . ",\n";
+  $scrollbar_stuff .= "horizontialDragMaxHeight: " . variable_get('scrollbar_horizontialDragMaxHeight', 99999) . ",\n";
+  $scrollbar_stuff .= "horizontialDragMinWidth: " . variable_get('scrollbar_horizontialDragMinWidth', 0) . ",\n";
+  $scrollbar_stuff .= "horizontialDragMaxWidth: " . variable_get('scrollbar_horizontialDragMaxWidth', 99999) . ",\n";
+
+  $scrollbar_stuff .= "arrowScrollOnHover: " . variable_get('scrollbar_arrowScrollOnHover', false) . ",\n";
+
+  $scrollbar_stuff .= "verticalArrowPositions: '" . variable_get('scrollbar_verticalArrowPositions', 'split') . "',\n";
+  $scrollbar_stuff .= "horizontialArrowPositions: '" . variable_get('scrollbar_horizontialArrowPositions', 'split') . "',\n";
+
+  $scrollbar_stuff .= "autoReinitialize: " . variable_get('scrollbar_autoReinitialize', 'false') . "\n";
+
+  $jARI = variable_get('scrollbar_autoReinitialize');  
+  if ($jARI == '1') {
+  $scrollbar_stuff .= ", autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . "\n";
+  } 
+  else {
+  }
+  $scrollbar_stuff .= "}); });";
+
+  $scrollbar_inlineJS = drupal_add_js($scrollbar_stuff, array('type' => 'inline', 'scope' => 'footer'));
+}
+
+/**
+ * Implements hook_init().
+ */
+
+function scrollbar_init() {
+
+  $basePath = libraries_get_path('scrollbar');
+  $basePathMod = drupal_get_path('module', 'scrollbar');
+
+  $installed_1 = file_exists($basePath . '/js/jquery.jscrollpane.min.js');
+  $installed_2 = file_exists($basePath . '/css/jquery.jscrollpane.css');
+  $installed_3 = file_exists($basePath . '/js/jquery.mousewheel.js');
+  $installed_4 = file_exists($basePath . '/js/mwheelIntent.js');
+
+/*
+ * Add jquery ui library from Drupal core and then add jquery.jscrollpane.min.js
+ */
+
+  drupal_add_library('system', 'ui');
+  if ($installed_1) {
+  drupal_add_js($basePath . '/js/jquery.jscrollpane.min.js');
+  scrollbar_inlineJS();
+  }
+
+/**
+ * If mousewheel and mwheelIntent libraries are installed add them into Drupal head.
+ */
+
+  if ($installed_3) {
+  drupal_add_js($basePath . '/js/jquery.mousewheel.js');
+  }
+  if ($installed_4) {
+  drupal_add_js($basePath . '/js/mwheelIntent.js');
+  }
+
+/**
+ * Add required CSS for scrollbar.
+ */
+
+  if ($installed_2) {
+  drupal_add_css($basePath . '/css/jquery.jscrollpane.css');
+  }
+}
+
+/**
+ * Provides the administration menu item for making settings changes
+ */
+
+function scrollbar_menu() {
+  $items['admin/config/scrollbar'] = array(
+    'title' => 'Scrollbar',
+    'description' => 'Adjust the settings of the scrollbar module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('scrollbar_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'scrollbar.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
