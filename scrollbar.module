@@ -11,43 +11,43 @@ function scrollbar_help($path, $arg) {
   switch ($path) {
     case 'admin/config/scrollbar':
 
-    $basepath = libraries_get_path('scrollbar');
-
-    $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
-    $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
-
-    $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
-    <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
-    file into libraries/scrollbar/js folder.</p></div>');
-
-    $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
-    <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
-    file into libraries/scrollbar/css folder.</p></div>');
-
-    $lorem_ipsum = "<div class=demo-class style=\"overflow:auto;height:200px;width:200px\"><p>Lorem Ipsum demo content.<br />
-    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
-    beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
-    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
-    qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora 
-    incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
-    exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
-    eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
-    eum fugiat quo voluptas nulla pariatur?</p></div>";
-
-    if ($installed_1 && $installed_2) {
-    return $lorem_ipsum;
-    }
-    elseif (!$installed_1 && $installed_2) {
-    return $missing_1;
-    }
-    elseif ($installed_1 && !$installed_2) {
-    return $missing_2;
-    }
-    elseif (!$installed_1 && !$installed_2) {
-    return $missing_1 . "<br />" . $missing_2;
-    }
- }
+      $basepath = libraries_get_path('scrollbar');
+  
+      $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
+      $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
+  
+      $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
+      <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
+      file into libraries/scrollbar/js folder.</p></div>');
+  
+      $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
+      <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
+      file into libraries/scrollbar/css folder.</p></div>');
+  
+      $lorem_ipsum = "<div class=demo-class style=\"overflow:auto;height:200px;width:200px\"><p>Lorem Ipsum demo content.<br />
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
+      beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
+      fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
+      qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora 
+      incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
+      exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
+      eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+      eum fugiat quo voluptas nulla pariatur?</p></div>";
+  
+      if ($installed_1 && $installed_2) {
+        return $lorem_ipsum;
+      }
+      elseif (!$installed_1 && $installed_2) {
+        return $missing_1;
+      }
+      elseif ($installed_1 && !$installed_2) {
+        return $missing_2;
+      }
+      elseif (!$installed_1 && !$installed_2) {
+        return $missing_1 . "<br />" . $missing_2;
+      }
+  }
 }
 
 /*
@@ -59,7 +59,7 @@ function scrollbar_inlineJS() {
 
   $scrollbar_stuff  = "jQuery(function () { jQuery('$jscrollable_element, .demo-class').jScrollPane({ \n";
 
-  $scrollbar_stuff .= "showArrows: " . variable_get('scrollbar_showArrows', true) . ",\n";
+  $scrollbar_stuff .= "showArrows: " . variable_get('scrollbar_showArrows', TRUE) . ",\n";
 
   $scrollbar_stuff .= "mouseWheelSpeed: " . variable_get('scrollbar_mouseWheelSpeed', 10) . ",\n";
   $scrollbar_stuff .= "arrowButtonSpeed: " . variable_get('scrollbar_arrowButtonSpeed', 10) . ",\n";
@@ -77,17 +77,17 @@ function scrollbar_inlineJS() {
   $scrollbar_stuff .= "horizontialDragMinWidth: " . variable_get('scrollbar_horizontialDragMinWidth', 0) . ",\n";
   $scrollbar_stuff .= "horizontialDragMaxWidth: " . variable_get('scrollbar_horizontialDragMaxWidth', 99999) . ",\n";
 
-  $scrollbar_stuff .= "arrowScrollOnHover: " . variable_get('scrollbar_arrowScrollOnHover', false) . ",\n";
+  $scrollbar_stuff .= "arrowScrollOnHover: " . variable_get('scrollbar_arrowScrollOnHover', FALSE) . ",\n";
 
   $scrollbar_stuff .= "verticalArrowPositions: '" . variable_get('scrollbar_verticalArrowPositions', 'split') . "',\n";
   $scrollbar_stuff .= "horizontialArrowPositions: '" . variable_get('scrollbar_horizontialArrowPositions', 'split') . "',\n";
 
   $scrollbar_stuff .= "autoReinitialize: " . variable_get('scrollbar_autoReinitialize', 'false') . "\n";
 
-  $j_auto_reintitialize = variable_get('scrollbar_autoReinitialize');  
+  $j_auto_reintitialize = variable_get('scrollbar_autoReinitialize');
   if ($jj_auto_reintitializ == '1') {
-  $scrollbar_stuff .= ", autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . "\n";
-  } 
+    $scrollbar_stuff .= ", autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . "\n";
+  }
   else {
   }
   $scrollbar_stuff .= "}); });";
@@ -100,46 +100,46 @@ function scrollbar_inlineJS() {
  */
 function scrollbar_init() {
 
-  $basepath = libraries_get_path('scrollbar');
-  $basepath_mod = drupal_get_path('module', 'scrollbar');
+    $basepath = libraries_get_path('scrollbar');
+    $basepath_mod = drupal_get_path('module', 'scrollbar');
+    
+    $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
+    $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
+    $installed_3 = file_exists($basepath . '/js/jquery.mousewheel.js');
+    $installed_4 = file_exists($basepath . '/js/mwheelIntent.js');
+    
+    /*
+     * Add jquery ui library from Drupal core and then add jquery.jscrollpane.min.js
+    */
+    
+    drupal_add_library('system', 'ui');
+    if ($installed_1) {
+      drupal_add_js($basepath . '/js/jquery.jscrollpane.min.js');
+      scrollbar_inlineJS();
+    }
+    
+    /**
+     * If mousewheel and mwheelIntent libraries are present add them into Drupal head.
+    */
+    
+    if ($installed_3) {
+      drupal_add_js($basepath . '/js/jquery.mousewheel.js');
+    }
+    if ($installed_4) {
+      drupal_add_js($basepath . '/js/mwheelIntent.js');
+    }
 
-  $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
-  $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
-  $installed_3 = file_exists($basepath . '/js/jquery.mousewheel.js');
-  $installed_4 = file_exists($basepath . '/js/mwheelIntent.js');
-
-/*
- * Add jquery ui library from Drupal core and then add jquery.jscrollpane.min.js
- */
-
-  drupal_add_library('system', 'ui');
-  if ($installed_1) {
-  drupal_add_js($basepath . '/js/jquery.jscrollpane.min.js');
-  scrollbar_inlineJS();
-  }
-
-/**
- * If mousewheel and mwheelIntent libraries are installed add them into Drupal head.
- */
-
-  if ($installed_3) {
-  drupal_add_js($basepath . '/js/jquery.mousewheel.js');
-  }
-  if ($installed_4) {
-  drupal_add_js($basepath . '/js/mwheelIntent.js');
-  }
-
-/**
- * Add required CSS for scrollbar.
- */
+    /**
+     * Add required CSS for scrollbar.
+     */
 
   if ($installed_2) {
-  drupal_add_css($basepath . '/css/jquery.jscrollpane.css');
+    drupal_add_css($basepath . '/css/jquery.jscrollpane.css');
   }
 }
 
 /**
- * Provides the administration menu item for making settings changes
+ * Implements hook_menu().
  */
 function scrollbar_menu() {
   $items['admin/config/scrollbar'] = array(
