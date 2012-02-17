@@ -7,7 +7,7 @@
 
 /**
  * Form builder. Configure scrollbar.
- */
+ */ 
 
 function scrollbar_admin_settings() {
     $form['scrollbar_scrollableElement'] = array(
