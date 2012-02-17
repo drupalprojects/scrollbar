@@ -77,7 +77,7 @@ function scrollbar_inlineJS() {
   $scrollbar_stuff .= "horizontialDragMinWidth: " . variable_get('scrollbar_horizontialDragMinWidth', 0) . ",\n";
   $scrollbar_stuff .= "horizontialDragMaxWidth: " . variable_get('scrollbar_horizontialDragMaxWidth', 99999) . ",\n";
 
-  $scrollbar_stuff .= "arrowScrollOnHover: " . variable_get('scrollbar_arrowScrollOnHover', FALSE) . ",\n";
+  $scrollbar_stuff .= "arrowScrollOnHover: " . variable_get('scrollbar_arrowScrollOnHover', 'false') . ",\n";
 
   $scrollbar_stuff .= "verticalArrowPositions: '" . variable_get('scrollbar_verticalArrowPositions', 'split') . "',\n";
   $scrollbar_stuff .= "horizontialArrowPositions: '" . variable_get('scrollbar_horizontialArrowPositions', 'split') . "',\n";
@@ -85,7 +85,7 @@ function scrollbar_inlineJS() {
   $scrollbar_stuff .= "autoReinitialize: " . variable_get('scrollbar_autoReinitialize', 'false') . "\n";
 
   $j_auto_reintitialize = variable_get('scrollbar_autoReinitialize');
-  if ($jj_auto_reintitializ == '1') {
+  if ($j_auto_reintitialize == '1') {
     $scrollbar_stuff .= ", autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . "\n";
   }
   else {

@@ -21,10 +21,10 @@ function scrollbar_admin_settings() {
     $form['scrollbar_showArrows'] = array(
       '#type' => 'select',
       '#title' => t('Show arrows for scrollbar'),
-      '#default_value' => variable_get('scrollbar_showArrows', TRUE),
+      '#default_value' => variable_get('scrollbar_showArrows', 'true'),
       '#options' => array(
-        'TRUE' => t('yes'),
-        'FALSE' => t('no'),
+        'true' => t('yes'),
+        'false' => t('no'),
       ),
       '#description' => t('Whether arrows should be shown on the generated scroll pane. When set to false only the scrollbar track and drag will be shown, if set to true then arrows buttons will also be shown.'),
     );
@@ -55,10 +55,10 @@ function scrollbar_admin_settings() {
     $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowScrollOnHover'] = array(
       '#type' => 'select',
       '#title' => t('Scroll element when mouse is over arrows'),
-      '#default_value' => variable_get('scrollbar_arrowScrollOnHover', FALSE),
+      '#default_value' => variable_get('scrollbar_arrowScrollOnHover', 'false'),
       '#options' => array(
-        'TRUE' => t('TRUE'),
-        'FALSE' => t('FALSE'),
+        'true' => t('true'),
+        'false' => t('false'),
       ),
       '#description' => t('Whether the arrow buttons should cause the scrollbar to scroll while you are hovering over them.'),
     );
@@ -201,10 +201,10 @@ function scrollbar_admin_settings() {
     $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialize'] = array(
       '#type' => 'select',
       '#title' => t('Reinitialise scrollbar'),
-      '#default_value' => variable_get('scrollbar_autoReinitialize', FALSE),
+      '#default_value' => variable_get('scrollbar_autoReinitialize', 'false'),
       '#options' => array(
-        'TRUE' => t('TRUE'),
-        'FALSE' => t('FALSE'),
+        'true' => t('true'),
+        'false' => t('false'),
       ),
       '#description' => t('Whether scrollbar should automatically reinitialise itself periodically after you have initially initialised it. <br />This can help with instances when the size of the content of the scrollpane (or the surrounding element) changes.<br />However, it does involve an overhead of running a javascript function on a timer so it is recommended only to activate where necessary.'),
     );
