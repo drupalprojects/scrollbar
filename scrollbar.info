@@ -6,5 +6,3 @@ dependencies[] = libraries
 files[] = scrollbar.module
 files[] = scrollbar.admin.inc
 files[] = scrollbar.install
-
-
