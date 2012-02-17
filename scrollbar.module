@@ -1,6 +1,10 @@
 <?php
 
 /**
+ * @file
+ */
+
+/**
  * Implement hook_help()
  */
 function scrollbar_help($path, $arg) {
