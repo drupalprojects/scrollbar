@@ -3,7 +3,8 @@
 About:
 ------
 
-Scrollbar is a very simple Drupal module to implement the jScrollPane javascript functionality to your Drupal and make the css selectors get a custom jquery scrollbar.
+Scrollbar is a very simple Drupal module to implement the jScrollPane javascript
+functionality to your Drupal and make the css selectors get a custom jquery scrollbar.
 
 jScrollPane is a cross-browser jQuery plugin by Kelvin Luck (http://jscrollpane.kelvinluck.com) which converts a browser's default scrollbars (on elements with a relevant overflow property) into an HTML structure which can be easily skinned with CSS. 
 
