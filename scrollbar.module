@@ -115,8 +115,8 @@ function scrollbar_init() {
       drupal_add_js($basepath . '/js/jquery.jscrollpane.min.js');
       scrollbar_inlineJS();
     }
-    
-    // If mousewheel and mwheelIntent libraries are present 
+
+    // If mousewheel and mwheelIntent libraries are present
     // add them into Drupal head.
     if ($installed_3) {
       drupal_add_js($basepath . '/js/jquery.mousewheel.js');
