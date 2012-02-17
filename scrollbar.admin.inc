@@ -11,18 +11,18 @@
 
 function scrollbar_admin_settings() {
 
-$form['scrollbar_scrollableElement'] = array(
-'#type' => 'textfield',
-'#title' => t('Elements to get the jScrollPane function'),
-'#default_value' => variable_get('scrollbar_scrollableElement', '.field-name-body'),
-'#size' => 100,
-'#required' => true,
-'#maxlength' => 800,
-'#description' => t("<p>Set here the DOM elements that will get the scrollbar function.</p>
-<p>Seperate elements with a comma. Example <code>.field-name-body, #mydiv</code></p>
-<p><b>Do not use a trailing comma</b></p>
-<p>Finally, don't forget to use the proper CSS. Example <code>.field-name-body {overflow:auto; height: 200px;}</code></p>"),
-);
+    $form['scrollbar_scrollableElement'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Elements to get the jScrollPane function'),
+    '#default_value' => variable_get('scrollbar_scrollableElement', '.field-name-body'),
+    '#size' => 100,
+    '#required' => true,
+    '#maxlength' => 800,
+    '#description' => t("<p>Set here the DOM elements that will get the scrollbar function.</p>
+    <p>Seperate elements with a comma. Example <code>.field-name-body, #mydiv</code></p>
+    <p><b>Do not use a trailing comma</b></p>
+    <p>Finally, don't forget to use the proper CSS. Example <code>.field-name-body {overflow:auto; height: 200px;}</code></p>"),
+    );
 
     $form['scrollbar_showArrows'] = array(
     '#type' => 'select',
