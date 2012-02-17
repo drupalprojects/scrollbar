@@ -12,18 +12,18 @@ function scrollbar_help($path, $arg) {
     case 'admin/config/scrollbar':
 
       $basepath = libraries_get_path('scrollbar');
-  
+
       $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
       $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
-  
+
       $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
       <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
       file into libraries/scrollbar/js folder.</p></div>');
-  
+
       $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
       <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
       file into libraries/scrollbar/css folder.</p></div>');
-  
+
       $lorem_ipsum = "<div class=demo-class style=\"overflow:auto;height:200px;width:200px\"><p>Lorem Ipsum demo content.<br />
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
       doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
@@ -34,7 +34,7 @@ function scrollbar_help($path, $arg) {
       exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
       eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
       eum fugiat quo voluptas nulla pariatur?</p></div>";
-  
+
       if ($installed_1 && $installed_2) {
         return $lorem_ipsum;
       }
@@ -50,7 +50,7 @@ function scrollbar_help($path, $arg) {
   }
 }
 
-/*
+/**
  * Apply settings for the scrollbar.
  */
 function scrollbar_inlineJS() {
@@ -102,16 +102,17 @@ function scrollbar_init() {
 
     $basepath = libraries_get_path('scrollbar');
     $basepath_mod = drupal_get_path('module', 'scrollbar');
-    
+
     $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
     $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
     $installed_3 = file_exists($basepath . '/js/jquery.mousewheel.js');
     $installed_4 = file_exists($basepath . '/js/mwheelIntent.js');
-    
-    /*
-     * Add jquery ui library from Drupal core and then add jquery.jscrollpane.min.js
-    */
-    
+
+    /**
+     * Add jquery ui library from Drupal core and then 
+     * add jquery.jscrollpane.min.js
+     */     
+
     drupal_add_library('system', 'ui');
     if ($installed_1) {
       drupal_add_js($basepath . '/js/jquery.jscrollpane.min.js');
@@ -120,8 +121,8 @@ function scrollbar_init() {
     
     /**
      * If mousewheel and mwheelIntent libraries are present add them into Drupal head.
-    */
-    
+     */
+
     if ($installed_3) {
       drupal_add_js($basepath . '/js/jquery.mousewheel.js');
     }
