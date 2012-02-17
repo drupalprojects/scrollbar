@@ -108,9 +108,8 @@ function scrollbar_init() {
     $installed_3 = file_exists($basepath . '/js/jquery.mousewheel.js');
     $installed_4 = file_exists($basepath . '/js/mwheelIntent.js');
 
-    // Add jquery ui library from Drupal core and then 
-    // add jquery.jscrollpane.min.js     
-
+    // Add jquery ui library from Drupal core and then
+    // add jquery.jscrollpane.min.js
     drupal_add_library('system', 'ui');
     if ($installed_1) {
       drupal_add_js($basepath . '/js/jquery.jscrollpane.min.js');
@@ -119,7 +118,6 @@ function scrollbar_init() {
     
     // If mousewheel and mwheelIntent libraries are present 
     // add them into Drupal head.
-
     if ($installed_3) {
       drupal_add_js($basepath . '/js/jquery.mousewheel.js');
     }
@@ -128,10 +126,9 @@ function scrollbar_init() {
     }
 
     // Add required CSS for scrollbar.
-
-  if ($installed_2) {
-    drupal_add_css($basepath . '/css/jquery.jscrollpane.css');
-  }
+    if ($installed_2) {
+      drupal_add_css($basepath . '/css/jquery.jscrollpane.css');
+    }
 }
 
 /**
