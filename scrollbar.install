@@ -8,7 +8,6 @@
 /**
  * Implements hook_requirements().
  */
-
 function scrollbar_requirements($phase) {
   $requirements = array();
 
@@ -20,17 +19,16 @@ function scrollbar_requirements($phase) {
       $requirements['scrollbar'] = array(
         'title' => t('scrollbar'),
         'severity' => REQUIREMENT_OK,
-        'value' => t('scrollbar module is installed normally')
+        'value' => t('scrollbar module is installed normally'),
       );
     }
     else {
       $requirements['scrollbar'] = array(
         'title' => t('scrollbar'),
         'severity' => REQUIREMENT_ERROR,
-        'value' => t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/scrollbar">scrollbar Configuration page</a> for more details.')
+        'value' => t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/scrollbar">scrollbar Configuration page</a> for more details.'),
       );
     }
-
   return $requirements;
   }
 }
@@ -38,14 +36,12 @@ function scrollbar_requirements($phase) {
 /**
  * Implements hook_install().
  */
-
 function scrollbar_install() {
 }
 
 /**
  * Implements hook_uninstall().
  */
-
 function scrollbar_uninstall() {
   variable_del('scrollbar_scrollableElement');
   variable_del('scrollbar_showArrows');
