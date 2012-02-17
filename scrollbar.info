@@ -1,12 +1,7 @@
 name = "Scrollbar"
 description = "Custom Scrollbar for Drupal 7 using jScollPane jQuery plugin."
 core = 7.x
-version = 7.x-1.0
-project = scrollbar
 dependencies[] = libraries
-
+files[] = scrollbar.install
 files[] = scrollbar.module
 files[] = scrollbar.admin.inc
-files[] = scrollbar.install
-
-
