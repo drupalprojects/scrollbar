@@ -82,13 +82,14 @@ function scrollbar_inlineJS() {
   $scrollbar_stuff .= "verticalArrowPositions: '" . variable_get('scrollbar_verticalArrowPositions', 'split') . "',\n";
   $scrollbar_stuff .= "horizontialArrowPositions: '" . variable_get('scrollbar_horizontialArrowPositions', 'split') . "',\n";
 
-  $scrollbar_stuff .= "autoReinitialize: " . variable_get('scrollbar_autoReinitialize', 'false') . "\n";
+  $scrollbar_stuff .= "autoReinitialize: " . variable_get('scrollbar_autoReinitialize', 'false') . ",\n";
 
   $j_auto_reintitialize = variable_get('scrollbar_autoReinitialize');
-  if ($j_auto_reintitialize == '1') {
-    $scrollbar_stuff .= ", autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . "\n";
+  if ($j_auto_reintitialize == "true") {
+    $scrollbar_stuff .= "autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . ",\n";
   }
   else {
+  print "OK";                                     
   }
   $scrollbar_stuff .= "}); });";
 
