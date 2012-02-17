@@ -1,4 +1,3 @@
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
 *Scrollbar*
 
 About:
@@ -16,7 +15,8 @@ Installation:
 -------------
 
 A) Donwload the module and extract it to the modules directory.
-B) Go to the jScrollPane download page at http://jscrollpane.kelvinluck.com/index.html#download
+B) Go to the jScrollPane download page at 
+http://jscrollpane.kelvinluck.com/index.html#download
 
 [Required files]
 
@@ -57,6 +57,7 @@ For more information on how to use the jScrollPane() parameters please refer to
 the jScrollPage settings page (http://jscrollpane.kelvinluck.com/settings.html).
 
 Gredits:
--------
+--------
+
 Many thanks to Kelvin Luck (http://kelvinluck.com) for this excellant 
 jquery plugin.
