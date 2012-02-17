@@ -1,17 +1,16 @@
 <?php
 
 /**
-  * Implement hook_help()
-  */
-
+ * Implement hook_help()
+ */
 function scrollbar_help($path, $arg) {
   switch ($path) {
   case 'admin/config/scrollbar':
 
-  $basePath = libraries_get_path('scrollbar');
+  $basepath = libraries_get_path('scrollbar');
 
-  $installed_1 = file_exists($basePath . '/js/jquery.jscrollpane.min.js');
-  $installed_2 = file_exists($basePath . '/css/jquery.jscrollpane.css');
+  $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
+  $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
   
   $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
   <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
@@ -103,13 +102,13 @@ function scrollbar_inlineJS() {
 
 function scrollbar_init() {
 
-  $basePath = libraries_get_path('scrollbar');
-  $basePathMod = drupal_get_path('module', 'scrollbar');
+  $basepath = libraries_get_path('scrollbar');
+  $basepath_mod = drupal_get_path('module', 'scrollbar');
 
-  $installed_1 = file_exists($basePath . '/js/jquery.jscrollpane.min.js');
-  $installed_2 = file_exists($basePath . '/css/jquery.jscrollpane.css');
-  $installed_3 = file_exists($basePath . '/js/jquery.mousewheel.js');
-  $installed_4 = file_exists($basePath . '/js/mwheelIntent.js');
+  $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
+  $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
+  $installed_3 = file_exists($basepath . '/js/jquery.mousewheel.js');
+  $installed_4 = file_exists($basepath . '/js/mwheelIntent.js');
 
 /*
  * Add jquery ui library from Drupal core and then add jquery.jscrollpane.min.js
@@ -117,7 +116,7 @@ function scrollbar_init() {
 
   drupal_add_library('system', 'ui');
   if ($installed_1) {
-  drupal_add_js($basePath . '/js/jquery.jscrollpane.min.js');
+  drupal_add_js($basepath . '/js/jquery.jscrollpane.min.js');
   scrollbar_inlineJS();
   }
 
@@ -126,10 +125,10 @@ function scrollbar_init() {
  */
 
   if ($installed_3) {
-  drupal_add_js($basePath . '/js/jquery.mousewheel.js');
+  drupal_add_js($basepath . '/js/jquery.mousewheel.js');
   }
   if ($installed_4) {
-  drupal_add_js($basePath . '/js/mwheelIntent.js');
+  drupal_add_js($basepath . '/js/mwheelIntent.js');
   }
 
 /**
@@ -137,7 +136,7 @@ function scrollbar_init() {
  */
 
   if ($installed_2) {
-  drupal_add_css($basePath . '/css/jquery.jscrollpane.css');
+  drupal_add_css($basepath . '/css/jquery.jscrollpane.css');
   }
 }
 
