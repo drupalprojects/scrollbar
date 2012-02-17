@@ -14,7 +14,7 @@ function scrollbar_admin_settings() {
       '#title' => t('Elements to get the jScrollPane function'),
       '#default_value' => variable_get('scrollbar_scrollableElement', '.field-name-body'),
       '#size' => 100,
-      '#required' => true,
+      '#required' => TRUE,
       '#maxlength' => 800,
       '#description' => t("<p>Set here the DOM elements that will get the scrollbar function.</p><p>Seperate elements with a comma. Example <code>.field-name-body, #mydiv</code></p><p><b>Do not use a trailing comma</b></p><p>Finally, don't forget to use the proper CSS. Example <code>.field-name-body {overflow:auto; height: 200px;}</code></p>"),
 );
@@ -24,8 +24,8 @@ function scrollbar_admin_settings() {
       '#title' => t('Show arrows for scrollbar'),
       '#default_value' => variable_get('scrollbar_showArrows', TRUE),
       '#options' => array(
-      'true' => t('yes'),
-      'false' => t('no'),
+      'TRUE' => t('yes'),
+      'FALSE' => t('no'),
       ),
       '#description' => t('Whether arrows should be shown on the generated scroll pane. When set to false only the scrollbar track and drag will be shown, if set to true then arrows buttons will also be shown.'),
 );
@@ -64,7 +64,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_arrowScrollOnHover', false),
       '#options' => array(
       'TRUE' => t('true'),
-      'false' => t('false'),
+      'FALSE' => t('false'),
       ),
       '#description' => t('Whether the arrow buttons should cause the scrollbar to scroll while you are hovering over them.'),
 );
