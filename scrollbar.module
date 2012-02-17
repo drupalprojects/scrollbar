@@ -89,7 +89,6 @@ function scrollbar_inlineJS() {
     $scrollbar_stuff .= "autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . ",\n";
   }
   else {
-  print "OK";                                     
   }
   $scrollbar_stuff .= "}); });";
 
