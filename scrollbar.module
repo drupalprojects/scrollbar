@@ -5,64 +5,59 @@
  */
 
 /**
- * Implement hook_help()
+ * Implements hook_help()
  */
 function scrollbar_help($path, $arg) {
   switch ($path) {
-  case 'admin/config/scrollbar':
-
-  $basepath = libraries_get_path('scrollbar');
-
-  $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
-  $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
+    case 'admin/config/scrollbar':
   
-  $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
-  <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
-  file into libraries/scrollbar/js folder.</p></div>');
+    $basepath = libraries_get_path('scrollbar');
   
-  $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
-  <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
-  file into libraries/scrollbar/css folder.</p></div>');
-  
-  $lorem_ipsum = "<div class=demo-class style=\"overflow:auto;height:200px;width:200px\"><p>Lorem Ipsum demo content.<br />
-  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
-  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
-  fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
-  qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora 
-  incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
-  exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
-  eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
-  eum fugiat quo voluptas nulla pariatur?</p></div>";
-  
-  if ($installed_1 && $installed_2) {
-  return $lorem_ipsum;
-  }
-  elseif (!$installed_1 && $installed_2) {
-  return $missing_1;
-  }
-  elseif ($installed_1 && !$installed_2) {
-  return $missing_2;
-  }
-  elseif (!$installed_1 && !$installed_2) {
-  return $missing_1 . "<br />" . $missing_2;
-  }
+    $installed_1 = file_exists($basepath . '/js/jquery.jscrollpane.min.js');
+    $installed_2 = file_exists($basepath . '/css/jquery.jscrollpane.css');
+    
+    $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
+    <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
+    file into libraries/scrollbar/js folder.</p></div>');
+    
+    $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
+    <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
+    file into libraries/scrollbar/css folder.</p></div>');
+    
+    $lorem_ipsum = "<div class=demo-class style=\"overflow:auto;height:200px;width:200px\"><p>Lorem Ipsum demo content.<br />
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
+    beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
+    fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
+    qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora 
+    incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum 
+    exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel 
+    eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
+    eum fugiat quo voluptas nulla pariatur?</p></div>";
+    
+    if ($installed_1 && $installed_2) {
+    return $lorem_ipsum;
+    }
+    elseif (!$installed_1 && $installed_2) {
+    return $missing_1;
+    }
+    elseif ($installed_1 && !$installed_2) {
+    return $missing_2;
+    }
+    elseif (!$installed_1 && !$installed_2) {
+    return $missing_1 . "<br />" . $missing_2;
+    }
  }
 }
 
 /*
  * Apply settings for the scrollbar.
- *
- * This is what actually puts the settings for the scrollbar onto the page. It finds
- * the settings and then compiles them into javascript settings that the jquery.jscrollpane.min.js file understands
- *
  */
-
 function scrollbar_inlineJS() {
 
-  $jscrollableElement = variable_get('scrollbar_scrollableElement', '.field-name-body');
+  $jscrollable_element = variable_get('scrollbar_scrollable_element', '.field-name-body');
 
-  $scrollbar_stuff  = "jQuery(function () { jQuery('$jscrollableElement, .demo-class').jScrollPane({ \n";
+  $scrollbar_stuff  = "jQuery(function () { jQuery('$jscrollable_element, .demo-class').jScrollPane({ \n";
 
   $scrollbar_stuff .= "showArrows: " . variable_get('scrollbar_showArrows', true) . ",\n";
 
@@ -89,8 +84,8 @@ function scrollbar_inlineJS() {
 
   $scrollbar_stuff .= "autoReinitialize: " . variable_get('scrollbar_autoReinitialize', 'false') . "\n";
 
-  $jARI = variable_get('scrollbar_autoReinitialize');  
-  if ($jARI == '1') {
+  $j_auto_reintitialize = variable_get('scrollbar_autoReinitialize');  
+  if ($jj_auto_reintitializ == '1') {
   $scrollbar_stuff .= ", autoReinitializeDelay: " . variable_get('scrollbar_autoReinitializeDelay', 500) . "\n";
   } 
   else {
@@ -103,7 +98,6 @@ function scrollbar_inlineJS() {
 /**
  * Implements hook_init().
  */
-
 function scrollbar_init() {
 
   $basepath = libraries_get_path('scrollbar');
@@ -158,7 +152,5 @@ function scrollbar_menu() {
     'file' => 'scrollbar.admin.inc',
     'type' => MENU_NORMAL_ITEM,
   );
-
   return $items;
 }
-

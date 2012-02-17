@@ -29,7 +29,7 @@ function scrollbar_requirements($phase) {
         'value' => t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/scrollbar">scrollbar Configuration page</a> for more details.'),
       );
     }
-  return $requirements;
+      return $requirements;
   }
 }
 

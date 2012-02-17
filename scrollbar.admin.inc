@@ -197,7 +197,7 @@ function scrollbar_admin_settings() {
         'os' => t('os'),
       ),
       '#description' => t('Where the horizontial arrows should appear relative to the horizontial track.'),
-    );      
+    );
     $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialize'] = array(
       '#type' => 'select',
       '#title' => t('Reinitialise scrollbar'),
@@ -215,6 +215,6 @@ function scrollbar_admin_settings() {
       '#size' => 5,
       '#maxlength' => 5,
       '#description' => t("The number of milliseconds between each reinitialisation (if autoReinitialise is true)."),
-    );            
+    );
   return system_settings_form($form);
 }
