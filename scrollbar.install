@@ -26,7 +26,7 @@ function scrollbar_requirements($phase) {
       $requirements['scrollbar'] = array(
         'title' => t('scrollbar'),
         'severity' => REQUIREMENT_ERROR,
-        'value' => t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/scrollbar">scrollbar Configuration page</a> for more details.'),
+        'value' => t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/user-interface/scrollbar">scrollbar Configuration page</a> for more details.'),
       );
     }
       return $requirements;
