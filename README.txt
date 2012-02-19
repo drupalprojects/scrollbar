@@ -52,7 +52,7 @@ http://jscrollpane.kelvinluck.com/index.html#examples
 Configuration:
 --------------
 
-A) Go to admin/config/scrollbar and configure as you want.
+A) Go to admin/config/user-interface/scrollbar and configure as you want.
 For more information on how to use the jScrollPane() parameters please refer to
 the jScrollPage settings page (http://jscrollpane.kelvinluck.com/settings.html).
 
