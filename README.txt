@@ -45,6 +45,7 @@ For example, if you want to apply the .jScrollPane() function to the
   height: 200px;
 	overflow: auto;
 }
+
 For more examples please refer to 
 http://jscrollpane.kelvinluck.com/index.html#examples
 
