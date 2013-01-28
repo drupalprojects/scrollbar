@@ -19,8 +19,8 @@ B) Go to the jScrollPane download page at
 http://jscrollpane.kelvinluck.com/index.html#download
 
 UPDATE: You can download all the required and complementary files from my 
-github repo at https://github.com/tplcom/jscrollpane/archive/master.zip and upload 
-them into libraries/jscrollpane folder (see below).
+github repo at https://github.com/tplcom/jscrollpane/archive/master.zip 
+and upload them into libraries/jscrollpane folder (see below).
 
 [Required files]
 
