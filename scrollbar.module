@@ -52,7 +52,8 @@ function scrollbar_help($path, $arg) {
 function scrollbar_init() {
   // Create settings for scrollbar.js
   drupal_add_js(
-    array('scrollbar' =>
+    array(
+      'scrollbar' =>
       array(
         'element'                   => variable_get('scrollbar_element', '.field-name-body'),
         'showArrows'                => variable_get('scrollbar_showArrows', TRUE),
