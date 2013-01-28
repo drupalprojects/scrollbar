@@ -17,16 +17,16 @@ function scrollbar_requirements($phase) {
 
     if (($installed_1)&&($installed_2)) {
       $requirements['scrollbar'] = array(
-        'title' => t('scrollbar'),
+        'title' => 'scrollbar',
         'severity' => REQUIREMENT_OK,
-        'value' => t('scrollbar module is installed normally'),
+        'value' => get_t('scrollbar module is installed normally'),
       );
     }
     else {
       $requirements['scrollbar'] = array(
-        'title' => t('scrollbar'),
+        'title' => 'scrollbar',
         'severity' => REQUIREMENT_ERROR,
-        'value' => t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/user-interface/scrollbar">scrollbar Configuration page</a> for more details.'),
+        'value' => get_t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/user-interface/scrollbar">scrollbar Configuration page</a> for more details.'),
       );
     }
       return $requirements;
