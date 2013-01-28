@@ -75,7 +75,7 @@ function scrollbar_init() {
           'horizontialArrowPositions' => variable_get('scrollbar_horizontialArrowPositions', 'split'),
           'autoReinitialize'          => variable_get('scrollbar_autoReinitialize', FALSE),
           'autoReinitializeDelay'     => variable_get('scrollbar_autoReinitializeDelay', 500),
-        )
+        ),
     ), 'setting'
   );
 
