@@ -18,23 +18,27 @@ A) Donwload the module and extract it to the modules directory.
 B) Go to the jScrollPane download page at 
 http://jscrollpane.kelvinluck.com/index.html#download
 
+UPDATE: You can download all the required and complementary files from my 
+github repo at https://github.com/tplcom/jscrollpane/archive/master.zip and upload 
+them into libraries/jscrollpane folder (see below).
+
 [Required files]
 
 1. Download jquery.jscrollpane.min.js and place it in to 
-modules-path/scrollbar/js/jquery.jscrollpane.min.js
-(eg ../sites/all/modules/scrollbar/js/jquery.jscrollpane.min.js)
+libraries_path/jscrollpane/jquery.jscrollpane.min.js
+(eg ../sites/all/libraries/jscrollpane/jquery.jscrollpane.min.js)
 2. Download jquery.jscrollpane.css and place it in to 
-modules-path/scrollbar/js/jquery.jscrollpane.css
-(eg ../sites/all/modules/scrollbar/css/jquery.jscrollpane.css)
+libraries_path/jscrollpane/jquery.jscrollpane.css
+(eg ../sites/all/libraries/jscrollpane/jquery.jscrollpane.css)
 
 [Optional files]
 
 3. Download jquery.mousewheel.js and place it in to 
-modules-path/scrollbar/js/jquery.mousewheel.js
-(eg ../sites/all/modules/scrollbar/js/jquery.mousewheel.js)
+libraries_path/jscrollpane/jquery.mousewheel.js
+(eg ../sites/all/libraries/jscrollpane/jquery.mousewheel.js)
 4. Download mwheelIntent.js and place it in to 
-modules-path/scrollbar/js/mwheelIntent.js
-(eg ../sites/all/modules/scrollbar/js/mwheelIntent.js)
+libraries_path/jscrollpane/mwheelIntent.js
+(eg ../sites/all/libraries/jscrollpane/mwheelIntent.js)
 
 C) On your theme css add one or more styles for the element you want to get the 
 custom jquery scrollbar.

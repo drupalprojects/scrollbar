@@ -9,10 +9,10 @@
  * Form builder. Configure scrollbar.
  */
 function scrollbar_admin_settings() {
-    $form['scrollbar_scrollableElement'] = array(
+    $form['scrollbar_element'] = array(
       '#type' => 'textfield',
       '#title' => t('Elements to get the jScrollPane function'),
-      '#default_value' => variable_get('scrollbar_scrollableElement', '.field-name-body'),
+      '#default_value' => variable_get('scrollbar_element', '.field-name-body'),
       '#size' => 100,
       '#required' => TRUE,
       '#maxlength' => 800,
@@ -68,6 +68,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_mouseWheelSpeed', 10),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("A multiplier which is used to control the amount that the scrollpane scrolls each time the mouse wheel is turned."),
     );
     $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowButtonSpeed'] = array(
@@ -76,6 +77,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_arrowButtonSpeed', 10),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("A multiplier which is used to control the amount that the scrollpane scrolls each time on of the arrow buttons is pressed."),
     );
     $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowRepeatFreq'] = array(
@@ -84,6 +86,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_arrowRepeatFreq', 100),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The number of milliseconds between each repeated scroll event when the mouse is held down over one of the arrow keys."),
     );
     $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialGutter'] = array(
@@ -92,6 +95,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_horizontialGutter', 5),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("Introduces a gap between the scrolling content and the scrollbar itself."),
     );
     $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalGutter'] = array(
@@ -100,6 +104,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_verticalGutter', 5),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("Introduces a gap between the scrolling content and the scrollbar itself."),
     );
     $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMinHeight'] = array(
@@ -108,6 +113,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_verticalDragMinHeight', 0),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The smallest height that the vertical drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -117,6 +123,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_verticalDragMaxHeight', 99999),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The maximum height that the vertical drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -126,6 +133,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_verticalDragMinWidth', 0),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The smallest width that the vertical drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -135,6 +143,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_verticalDragMaxWidth', 99999),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The maximum width that the vertical drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -144,6 +153,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_horizontialDragMinHeight', 0),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The smallest height that the horizontial drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -153,6 +163,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_horizontialDragMaxHeight', 99999),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The maximum height that the horizontial drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -162,6 +173,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_horizontialDragMinWidth', 0),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The smallest width that the horizontial drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -171,6 +183,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_horizontialDragMaxWidth', 99999),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The maximum width that the horizontial drag can have.<br />
       The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
     );
@@ -214,6 +227,7 @@ function scrollbar_admin_settings() {
       '#default_value' => variable_get('scrollbar_autoReinitializeDelay', 500),
       '#size' => 5,
       '#maxlength' => 5,
+      '#element_validate' => array('element_validate_integer_positive'),
       '#description' => t("The number of milliseconds between each reinitialisation (if autoReinitialise is true)."),
     );
   return system_settings_form($form);
