@@ -29,14 +29,8 @@ function scrollbar_requirements($phase) {
         'value' => get_t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="/admin/config/user-interface/scrollbar">scrollbar Configuration page</a> for more details.'),
       );
     }
-      return $requirements;
+    return $requirements;
   }
-}
-
-/**
- * Implements hook_install().
- */
-function scrollbar_install() {
 }
 
 /**

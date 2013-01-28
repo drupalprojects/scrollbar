@@ -2,8 +2,9 @@
   Drupal.behaviors.scrollbar = {
     attach: function (context, settings) {
       var $element = settings.scrollbar.element;
-      $($element+", .demo-class").jScrollPane({
-        showArrows: (settings.scrollbar.showArrows === 'true'), // jScrollpane needs clear true or false, not quoted text
+      $($element + ", .demo-class").jScrollPane({
+        // jScrollpane needs clear true or false, not quoted text so we add this if statement
+        showArrows: (settings.scrollbar.showArrows === 'true'),
         arrowScrollOnHover: (settings.scrollbar.arrowScrollOnHover === 'true'),
         mouseWheelSpeed: settings.scrollbar.mouseWheelSpeed,
         arrowButtonSpeed: settings.scrollbar.arrowButtonSpeed,

@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Scrollbar module help, settings and configuration menu
  */
 
 /**
@@ -51,6 +52,7 @@ function scrollbar_help($path, $arg) {
 function scrollbar_init() {
   // Create settings for scrollbar.js
   drupal_add_js(
+  
     array('scrollbar' => array(
       'element'                   => variable_get('scrollbar_element', '.field-name-body'),
       'showArrows'                => variable_get('scrollbar_showArrows', true),
@@ -97,7 +99,7 @@ function scrollbar_init() {
   if ($installed_2) {
     drupal_add_css($basepath . '/jquery.jscrollpane.css');
   }
-  
+
   // Add jquery ui library from Drupal core and then
   // add jquery.jscrollpane.min.js
   drupal_add_library('system', 'ui');
