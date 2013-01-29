@@ -1,4 +1,4 @@
-*Scrollbar*
+*Scrollbar Module*
 
 About:
 ------
@@ -14,7 +14,7 @@ structure which can be easily skinned with CSS.
 Installation:
 -------------
 
-A) Donwload the module and extract it to the modules directory.
+A) Donwload the module and exctract it to the modules directory.
 B) Go to the jScrollPane download page at 
 http://jscrollpane.kelvinluck.com/index.html#download
 
@@ -53,7 +53,6 @@ For example, if you want to apply the .jScrollPane() function to the
 For more examples please refer to 
 http://jscrollpane.kelvinluck.com/index.html#examples
 
-
 Configuration:
 --------------
 
@@ -61,7 +60,7 @@ A) Go to admin/config/user-interface/scrollbar and configure as you want.
 For more information on how to use the jScrollPane() parameters please refer to
 the jScrollPage settings page (http://jscrollpane.kelvinluck.com/settings.html).
 
-Gredits:
+Credits:
 --------
 
 Many thanks to Kelvin Luck (http://kelvinluck.com) for this excellant 
