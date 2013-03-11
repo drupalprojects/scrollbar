@@ -20,22 +20,22 @@ function scrollbar_help($path, $arg) {
       $missing_1 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.min.js is missing</em>') . '</p>';
       $missing_1 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
         array(
-          '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html", 
+          '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html",
             array('
-              attributes' => array('target' => '_blank'), 
-              'fragment' => 'download')
-            )
+              attributes' => array('target' => '_blank'),
+              'fragment' => 'download',
+            ))
           ));
       $missing_1 .= "</p></div>";
       
       $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>') . '</p>';
-      $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', 
+      $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
         array(
-          '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html", 
+          '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html",
             array(
-              'attributes' => array('target' => '_blank'), 
-              'fragment' => 'download')
-              )
+              'attributes' => array('target' => '_blank'),
+              'fragment' => 'download',
+              ))
         ));
       $missing_2 .= "</p></div>";
 
@@ -84,19 +84,19 @@ function scrollbar_init() {
   if ($installed_4) {
     drupal_add_js($basepath . '/mwheelIntent.js');
   }
-  
+
   // Add required CSS for scrollbar.
   if ($installed_2) {
     drupal_add_css($basepath . '/jquery.jscrollpane.css');
   }
-  
+
   if ($installed_1) {
     // Add jquery ui library from Drupal core.
     drupal_add_library('system', 'ui');
-    
+
     // Add jquery.jscrollpane.min.js.
     drupal_add_js($basepath . '/jquery.jscrollpane.min.js');
-    
+
     // Create settings for scrollbar.js.
     drupal_add_js(
       array(
@@ -125,8 +125,8 @@ function scrollbar_init() {
         ),
       ), 'setting'
     );
-    
-    // and finally, add scrollbar.js with above settings
+
+    // Add scrollbar.js with above settings.
     drupal_add_js($basepath_mod . '/scrollbar.js');
   }
 }
@@ -148,7 +148,7 @@ function scrollbar_menu() {
 }
 
 /**
- * Function to validate a positive integer value or zero value
+ * Function to validate a positive integer value or zero value.
  */
 function scrollbar_validate_integer_positive_zero($element, &$form_state) {
   $value = $element['#value'];
