@@ -21,12 +21,12 @@ function scrollbar_help($path, $arg) {
       $missing_1 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
         array(
           '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html",
-            array('
-              attributes' => array('target' => '_blank'),
+            array(
+              'attributes' => array('target' => '_blank'),
               'fragment' => 'download',
-            ))
-          ));
-      $missing_1 .= "</p></div>";
+            ),
+          )
+          )) . "</p></div>";
       
       $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>') . '</p>';
       $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
@@ -35,9 +35,9 @@ function scrollbar_help($path, $arg) {
             array(
               'attributes' => array('target' => '_blank'),
               'fragment' => 'download',
-              ))
-        ));
-      $missing_2 .= "</p></div>";
+            ),
+          )
+        )) . "</p></div>";
 
       $lorem_ipsum = '<div class=demo-class style="overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;">';
       $lorem_ipsum .= "<p>" . t('Lorem Ipsum demo content') . "<br />";
