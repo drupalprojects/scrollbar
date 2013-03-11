@@ -25,9 +25,9 @@ function scrollbar_help($path, $arg) {
               'attributes' => array('target' => '_blank'),
               'fragment' => 'download',
             ),
-          )
+          ),
           )) . "</p></div>";
-      
+
       $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>') . '</p>';
       $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
         array(
@@ -36,7 +36,7 @@ function scrollbar_help($path, $arg) {
               'attributes' => array('target' => '_blank'),
               'fragment' => 'download',
             ),
-          )
+          ),
         )) . "</p></div>";
 
       $lorem_ipsum = '<div class=demo-class style="overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;">';
