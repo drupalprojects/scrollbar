@@ -24,7 +24,7 @@
         autoReinitialize: (settings.scrollbar.autoReinitialize === "true"),
         autoReinitializeDelay: settings.scrollbar.autoReinitializeDelay
       });
-    // Debugging settings. Uncomment the line below to test.
+    // Uncomment the line below for debugging.
     // console.log(settings.scrollbar);
     }
   };

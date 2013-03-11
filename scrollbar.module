@@ -17,19 +17,20 @@ function scrollbar_help($path, $arg) {
       $installed_1 = file_exists($basepath . '/jquery.jscrollpane.min.js');
       $installed_2 = file_exists($basepath . '/jquery.jscrollpane.css');
 
-      $missing_1 = t('<div class="messages error"><p><em>jquery.jscrollpane.min.js is missing</em>.</p>
-      <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this file into libraries/jscrollpane folder.</p></div>');
+      $missing_1 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.min.js is missing</em>'). '</p>';
+      $missing_1 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', array('!download-link' => l("main jScrollPane page", "http://jscrollpane.kelvinluck.com/index.html", array('attributes' => array('target'=>'_blank'), 'fragment'=>'download')))) . "</p></div>";
+      
+      $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>'). '</p>';
+      $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', array('!download-link' => l("main jScrollPane page", "http://jscrollpane.kelvinluck.com/index.html", array('attributes' => array('target'=>'_blank'), 'fragment'=>'download')))) . "</p></div>";
 
-      $missing_2 = t('<div class="messages error"><p><em>jquery.jscrollpane.css is missing</em>.</p>
-      <p>Please go to the <a href=http://jscrollpane.kelvinluck.com/index.html#download target=_blank>main jScrollPane page</a> and download this 
-      file into libraries/jscrollpane folder.</p></div>');
-
-      $lorem_ipsum = "<div class=demo-class style=\"overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;\"><p>Lorem Ipsum demo content.<br />
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
+      $lorem_ipsum = '<div class=demo-class style="overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;">';
+      $lorem_ipsum .= "<p>" . t('Lorem Ipsum demo content') . "<br />";
+      $lorem_ipsum .= t('Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
       doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
       beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
       fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
-      qui dolorem ipsum quia dolor sit amet, consectetur.</p></div>";
+      qui dolorem ipsum quia dolor sit amet, consectetur.');
+      $lorem_ipsum .= "</div>";
 
       if ($installed_1 && $installed_2) {
         return $lorem_ipsum;
@@ -50,34 +51,6 @@ function scrollbar_help($path, $arg) {
  * Implements hook_init().
  */
 function scrollbar_init() {
-  // Create settings for scrollbar.js
-  drupal_add_js(
-    array(
-      'scrollbar' =>
-      array(
-        'element'                   => variable_get('scrollbar_element', '.field-name-body'),
-        'showArrows'                => variable_get('scrollbar_showArrows', TRUE),
-        'mouseWheelSpeed'           => variable_get('scrollbar_mouseWheelSpeed', 10),
-        'arrowButtonSpeed'          => variable_get('scrollbar_arrowButtonSpeed', 10),
-        'arrowRepeatFreq'           => variable_get('scrollbar_arrowRepeatFreq', 100),
-        'horizontialGutter'         => variable_get('scrollbar_horizontialGutter', 4),
-        'verticalGutter'            => variable_get('scrollbar_verticalGutter', 4),
-        'verticalDragMinHeight'     => variable_get('scrollbar_verticalDragMinHeight', 0),
-        'verticalDragMaxHeight'     => variable_get('scrollbar_verticalDragMaxHeight', 99999),
-        'verticalDragMinWidth'      => variable_get('scrollbar_verticalDragMinWidth', 0),
-        'verticalDragMaxWidth'      => variable_get('scrollbar_verticalDragMaxWidth', 99999),
-        'horizontialDragMinHeight'  => variable_get('scrollbar_horizontialDragMinHeight', 0),
-        'horizontialDragMaxHeight'  => variable_get('scrollbar_horizontialDragMaxHeight', 99999),
-        'horizontialDragMinWidth'   => variable_get('scrollbar_horizontialDragMinWidth', 0),
-        'horizontialDragMaxWidth'   => variable_get('scrollbar_horizontialDragMaxWidth', 99999),
-        'arrowScrollOnHover'        => variable_get('scrollbar_arrowScrollOnHover', TRUE),
-        'verticalArrowPositions'    => variable_get('scrollbar_verticalArrowPositions', 'split'),
-        'horizontialArrowPositions' => variable_get('scrollbar_horizontialArrowPositions', 'split'),
-        'autoReinitialize'          => variable_get('scrollbar_autoReinitialize', FALSE),
-        'autoReinitializeDelay'     => variable_get('scrollbar_autoReinitializeDelay', 500),
-      ),
-    ), 'setting'
-  );
 
   // Check if necessary files exist.
   $basepath = libraries_get_path('jscrollpane');
@@ -101,12 +74,44 @@ function scrollbar_init() {
   if ($installed_2) {
     drupal_add_css($basepath . '/jquery.jscrollpane.css');
   }
-
-  // Add jquery ui library from Drupal core and then
-  // add jquery.jscrollpane.min.js
-  drupal_add_library('system', 'ui');
+  
   if ($installed_1) {
+    // Add jquery ui library from Drupal core
+    drupal_add_library('system', 'ui');
+    
+    // Add jquery.jscrollpane.min.js
     drupal_add_js($basepath . '/jquery.jscrollpane.min.js');
+    
+    // Create settings for scrollbar.js
+    drupal_add_js(
+      array(
+        'scrollbar' =>
+        array(
+          'element'                   => variable_get('scrollbar_element', '.field-name-body'),
+          'showArrows'                => variable_get('scrollbar_showArrows', TRUE),
+          'mouseWheelSpeed'           => variable_get('scrollbar_mouseWheelSpeed', 10),
+          'arrowButtonSpeed'          => variable_get('scrollbar_arrowButtonSpeed', 10),
+          'arrowRepeatFreq'           => variable_get('scrollbar_arrowRepeatFreq', 100),
+          'horizontialGutter'         => variable_get('scrollbar_horizontialGutter', 4),
+          'verticalGutter'            => variable_get('scrollbar_verticalGutter', 4),
+          'verticalDragMinHeight'     => variable_get('scrollbar_verticalDragMinHeight', 0),
+          'verticalDragMaxHeight'     => variable_get('scrollbar_verticalDragMaxHeight', 99999),
+          'verticalDragMinWidth'      => variable_get('scrollbar_verticalDragMinWidth', 0),
+          'verticalDragMaxWidth'      => variable_get('scrollbar_verticalDragMaxWidth', 99999),
+          'horizontialDragMinHeight'  => variable_get('scrollbar_horizontialDragMinHeight', 0),
+          'horizontialDragMaxHeight'  => variable_get('scrollbar_horizontialDragMaxHeight', 99999),
+          'horizontialDragMinWidth'   => variable_get('scrollbar_horizontialDragMinWidth', 0),
+          'horizontialDragMaxWidth'   => variable_get('scrollbar_horizontialDragMaxWidth', 99999),
+          'arrowScrollOnHover'        => variable_get('scrollbar_arrowScrollOnHover', TRUE),
+          'verticalArrowPositions'    => variable_get('scrollbar_verticalArrowPositions', 'split'),
+          'horizontialArrowPositions' => variable_get('scrollbar_horizontialArrowPositions', 'split'),
+          'autoReinitialize'          => variable_get('scrollbar_autoReinitialize', FALSE),
+          'autoReinitializeDelay'     => variable_get('scrollbar_autoReinitializeDelay', 500),
+        ),
+      ), 'setting'
+    );
+    
+    // and finally, add scrollbar.js with above settings
     drupal_add_js($basepath_mod . '/scrollbar.js');
   }
 }
@@ -125,4 +130,14 @@ function scrollbar_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
   return $items;
+}
+
+/**
+ * Function to validate a positive integer value or zero value
+ */
+function element_validate_integer_positive_zero($element, &$form_state) {
+  $value = $element['#value'];
+  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
+    form_error($element, t('%name must be a positive integer or zero.', array('%name' => $element['#title'])));
+  }
 }

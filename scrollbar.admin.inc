@@ -8,7 +8,7 @@
 /**
  * Form builder. Configure scrollbar.
  */
-function scrollbar_admin_settings() {
+function scrollbar_admin_settings() { 
   $form['scrollbar_element'] = array(
     '#type' => 'textfield',
     '#title' => t('Elements to get the jScrollPane function'),
@@ -16,7 +16,10 @@ function scrollbar_admin_settings() {
     '#size' => 100,
     '#required' => TRUE,
     '#maxlength' => 800,
-    '#description' => t("<p>Set here the DOM elements that will get the scrollbar function.</p><p>Seperate elements with a comma. Example <code>.field-name-body, #mydiv</code></p><p><b>Do not use a trailing comma</b></p><p>Finally, don't forget to use the proper CSS. Example <code>.field-name-body {overflow:auto; height: 200px;}</code></p>"),
+    '#description' => "<p>" . t('Set here the DOM elements that will get the scrollbar function.') . "</p>" .
+                      "<p>" . t('Seperate elements with a comma. Example <code>@code</code>', array('@code'=> '.field-name-body, #mydiv')) . "</p>" .
+                      "<p>" . t('<b>Do not use a trailing comma</b>') . "</p>" .
+                      "<p>" . t("Finally, don't forget to use the proper CSS. Example <code>@code</code>", array('@code'=> ".field-name-body {overflow:auto; \n height: 200px;}")) . "</p>",
   );
   $form['scrollbar_showArrows'] = array(
     '#type' => 'select',
@@ -30,7 +33,7 @@ function scrollbar_admin_settings() {
   );
   $form['scrollbar_advancedOptions'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Advnaced options'),
+    '#title' => t('Advanced options'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
@@ -45,12 +48,14 @@ function scrollbar_admin_settings() {
     '#title' => t('Vertical scrollbar options'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
+    '#description' => "<p>" . t('The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions'] = array(
     '#type' => 'fieldset',
     '#title' => t('Horizontial scrollbar options'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
+    '#description' => "<p>" . t('The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowScrollOnHover'] = array(
     '#type' => 'select',
@@ -68,7 +73,7 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_mouseWheelSpeed', 10),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
     '#description' => t("A multiplier which is used to control the amount that the scrollpane scrolls each time the mouse wheel is turned."),
   );
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowButtonSpeed'] = array(
@@ -77,17 +82,17 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_arrowButtonSpeed', 10),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("A multiplier which is used to control the amount that the scrollpane scrolls each time on of the arrow buttons is pressed."),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => t('A multiplier which is used to control the amount that the scrollpane scrolls each time on of the arrow buttons is pressed.'),
   );
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowRepeatFreq'] = array(
     '#type' => 'textfield',
-    '#title' => t('Arrow buttons Repaet frequency, in ms'),
+    '#title' => t('Arrow buttons Repeat frequency, in ms'),
     '#default_value' => variable_get('scrollbar_arrowRepeatFreq', 100),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The number of milliseconds between each repeated scroll event when the mouse is held down over one of the arrow keys."),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => t('The number of milliseconds between each repeated scroll event when the mouse is held down over one of the arrow keys.'),
   );
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialGutter'] = array(
     '#type' => 'textfield',
@@ -95,8 +100,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_horizontialGutter', 5),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("Introduces a gap between the scrolling content and the scrollbar itself."),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => t('Introduces a gap between the scrolling content and the scrollbar itself.'),
   );
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalGutter'] = array(
     '#type' => 'textfield',
@@ -104,8 +109,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_verticalGutter', 5),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("Introduces a gap between the scrolling content and the scrollbar itself."),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => t('Introduces a gap between the scrolling content and the scrollbar itself.'),
   );
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMinHeight'] = array(
     '#type' => 'textfield',
@@ -113,9 +118,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_verticalDragMinHeight', 0),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The smallest height that the vertical drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The smallest height that the vertical drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMaxHeight'] = array(
     '#type' => 'textfield',
@@ -123,9 +127,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_verticalDragMaxHeight', 99999),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The maximum height that the vertical drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The maximum height that the vertical drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMinWidth'] = array(
     '#type' => 'textfield',
@@ -133,9 +136,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_verticalDragMinWidth', 0),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The smallest width that the vertical drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The smallest width that the vertical drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMaxWidth'] = array(
     '#type' => 'textfield',
@@ -143,9 +145,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_verticalDragMaxWidth', 99999),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The maximum width that the vertical drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The maximum width that the vertical drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMinHeight'] = array(
     '#type' => 'textfield',
@@ -153,9 +154,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_horizontialDragMinHeight', 0),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The smallest height that the horizontial drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The smallest height that the horizontial drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMaxHeight'] = array(
     '#type' => 'textfield',
@@ -163,9 +163,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_horizontialDragMaxHeight', 99999),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The maximum height that the horizontial drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The maximum height that the horizontial drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMinWidth'] = array(
     '#type' => 'textfield',
@@ -173,9 +172,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_horizontialDragMinWidth', 0),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The smallest width that the horizontial drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The smallest width that the horizontial drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMaxWidth'] = array(
     '#type' => 'textfield',
@@ -183,9 +181,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_horizontialDragMaxWidth', 99999),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The maximum width that the horizontial drag can have.<br />
-    The size of the drag elements is based on the proportion of the size of the content to the size of the viewport but is contrained within the minimum and maximum dimensions given"),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => "<p>" . t('The maximum width that the horizontial drag can have') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalArrowPositions'] = array(
     '#type' => 'select',
@@ -219,7 +216,9 @@ function scrollbar_admin_settings() {
       'true' => t('true'),
       'false' => t('false'),
     ),
-    '#description' => t('Whether scrollbar should automatically reinitialise itself periodically after you have initially initialised it. <br />This can help with instances when the size of the content of the scrollpane (or the surrounding element) changes.<br />However, it does involve an overhead of running a javascript function on a timer so it is recommended only to activate where necessary.'),
+    '#description' => "<p>" . t('Whether scrollbar should automatically reinitialise itself periodically after you have initially initialised it.') . "</p>" . 
+                      "<p>" . t('This can help with instances when the size of the content of the scrollpane (or the surrounding element) changes.') . "</p>" . 
+                      "<p>" . t('However, it does involve an overhead of running a javascript function on a timer so it is recommended only to activate where necessary.') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitializeDelay'] = array(
     '#type' => 'textfield',
@@ -227,8 +226,8 @@ function scrollbar_admin_settings() {
     '#default_value' => variable_get('scrollbar_autoReinitializeDelay', 500),
     '#size' => 5,
     '#maxlength' => 5,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#description' => t("The number of milliseconds between each reinitialisation (if autoReinitialise is true)."),
+    '#element_validate' => array('element_validate_integer_positive_zero'),
+    '#description' => t('The number of milliseconds between each reinitialisation (if autoReinitialise is true).'),
   );
   return system_settings_form($form);
 }
