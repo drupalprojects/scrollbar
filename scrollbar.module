@@ -17,11 +17,19 @@ function scrollbar_help($path, $arg) {
       $installed_1 = file_exists($basepath . '/jquery.jscrollpane.min.js');
       $installed_2 = file_exists($basepath . '/jquery.jscrollpane.css');
 
-      $missing_1 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.min.js is missing</em>'). '</p>';
-      $missing_1 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', array('!download-link' => l("main jScrollPane page", "http://jscrollpane.kelvinluck.com/index.html", array('attributes' => array('target'=>'_blank'), 'fragment'=>'download')))) . "</p></div>";
+      $missing_1 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.min.js is missing</em>') . '</p>';
+      $missing_1 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
+        array('!download-link' => l("main jScrollPane page", "http://jscrollpane.kelvinluck.com/index.html", 
+          array('attributes' => array('target' => '_blank'), 
+            'fragment'=>'download'))));
+      $missing_1 .= "</p></div>";
       
-      $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>'). '</p>';
-      $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', array('!download-link' => l("main jScrollPane page", "http://jscrollpane.kelvinluck.com/index.html", array('attributes' => array('target'=>'_blank'), 'fragment'=>'download')))) . "</p></div>";
+      $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>') . '</p>';
+      $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', 
+        array('!download-link' => l("main jScrollPane page", "http://jscrollpane.kelvinluck.com/index.html", 
+          array('attributes' => array('target' => '_blank'), 
+            'fragment'=>'download'))));
+      $missing_2 .= "</p></div>";
 
       $lorem_ipsum = '<div class=demo-class style="overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;">';
       $lorem_ipsum .= "<p>" . t('Lorem Ipsum demo content') . "<br />";
@@ -61,28 +69,27 @@ function scrollbar_init() {
   $installed_3 = file_exists($basepath . '/jquery.mousewheel.js');
   $installed_4 = file_exists($basepath . '/mwheelIntent.js');
 
-  // If mousewheel and mwheelIntent libraries are present
-  // add them in $scripts variable.
+  // Add mousewheel and mwheelIntent if they exist.
   if ($installed_3) {
     drupal_add_js($basepath . '/jquery.mousewheel.js');
   }
   if ($installed_4) {
     drupal_add_js($basepath . '/mwheelIntent.js');
   }
-
+  
   // Add required CSS for scrollbar.
   if ($installed_2) {
     drupal_add_css($basepath . '/jquery.jscrollpane.css');
   }
   
   if ($installed_1) {
-    // Add jquery ui library from Drupal core
+    // Add jquery ui library from Drupal core.
     drupal_add_library('system', 'ui');
     
-    // Add jquery.jscrollpane.min.js
+    // Add jquery.jscrollpane.min.js.
     drupal_add_js($basepath . '/jquery.jscrollpane.min.js');
     
-    // Create settings for scrollbar.js
+    // Create settings for scrollbar.js.
     drupal_add_js(
       array(
         'scrollbar' =>
@@ -135,7 +142,7 @@ function scrollbar_menu() {
 /**
  * Function to validate a positive integer value or zero value
  */
-function element_validate_integer_positive_zero($element, &$form_state) {
+function scrollbar_validate_integer_positive_zero($element, &$form_state) {
   $value = $element['#value'];
   if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
     form_error($element, t('%name must be a positive integer or zero.', array('%name' => $element['#title'])));
