@@ -17,9 +17,10 @@ function scrollbar_admin_settings() {
     '#required' => TRUE,
     '#maxlength' => 800,
     '#description' => "<p>" . t('Set here the DOM elements that will get the scrollbar function.') . "</p>" .
-      "<p>" . t('Seperate elements with a comma. Example <code>@code</code>', array('@code' => '.field-name-body, #mydiv')) . "</p>" .
-      "<p>" . t('<b>Do not use a trailing comma</b>') . "</p>" .
-      "<p>" . t("Finally, don't forget to use the proper CSS. Example <code>@code</code>", array('@code' =>  ".field-name-body {overflow:auto; \n height: 200px;}")) . "</p>",
+    "<p>" . t('Seperate elements with a comma. Example <code>@code</code>', array('@code' => '.field-name-body, #mydiv')) . "</p>" .
+    "<p>" . t('<b>Do not use a trailing comma</b>') . "</p>" .
+    "<p>" . t("Finally, don't forget to use the proper CSS. Example <code>@code</code>", 
+    array('@code' => ".field-name-body {overflow:auto; \n height: 200px;}")) . "</p>",
   );
   $form['scrollbar_showArrows'] = array(
     '#type' => 'select',
@@ -217,8 +218,8 @@ function scrollbar_admin_settings() {
       'false' => t('false'),
     ),
     '#description' => "<p>" . t('Whether scrollbar should automatically reinitialise itself periodically after you have initially initialised it.') . "</p>" .
-      "<p>" . t('This can help with instances when the size of the content of the scrollpane (or the surrounding element) changes.') . "</p>" . 
-      "<p>" . t('However, it does involve an overhead of running a javascript function on a timer so it is recommended only to activate where necessary.') . "</p>",
+    "<p>" . t('This can help with instances when the size of the content of the scrollpane (or the surrounding element) changes.') . "</p>" .
+    "<p>" . t('However, it does involve an overhead of running a javascript function on a timer so it is recommended only to activate where necessary.') . "</p>",
   );
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitializeDelay'] = array(
     '#type' => 'textfield',
