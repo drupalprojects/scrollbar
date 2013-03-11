@@ -18,7 +18,7 @@ function scrollbar_admin_settings() {
     '#maxlength' => 800,
     '#description' => "<p>" . t('Set here the DOM elements that will get the scrollbar function.') . "</p>" .
     "<p>" . t('Seperate elements with a comma. Example <code>@code</code>', array('@code' => '.field-name-body, #mydiv')) . "</p>" .
-    "<p><strong>" . t('Do not use a trailing comma.') . "</strong></p>" .
+    "<p><strong>" . t('Do not use a trailing comma') . "</strong></p>" .
     "<p>" . t("Finally, don't forget to use the proper CSS. Example <code>@code</code>",
     array('@code' => ".field-name-body {overflow:auto; \n height: 200px;}")) . "</p>",
   );
