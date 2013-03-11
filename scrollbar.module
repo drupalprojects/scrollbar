@@ -23,7 +23,7 @@ function scrollbar_help($path, $arg) {
           array(
             'attributes' => array(
               'target' => '_blank',
-              ),
+            ),
             'fragment' => 'download')
           ),
         )
