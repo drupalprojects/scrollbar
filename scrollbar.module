@@ -17,23 +17,27 @@ function scrollbar_help($path, $arg) {
       $installed_1 = file_exists($basepath . '/jquery.jscrollpane.min.js');
       $installed_2 = file_exists($basepath . '/jquery.jscrollpane.css');
 
-      $missing_1 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.min.js is missing</em>') . '</p>';
-      $missing_1 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
+      $download_link = "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
         array(
-          '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html", 
+          '!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html",
           array(
             'attributes' => array(
-              'target' => '_blank'
-              ), 
+              'target' => '_blank',
+              ),
             'fragment' => 'download')
-          )
+          ),
         )
-      ) . "</p></div>";
+      ) . "</p>";
 
-      $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>') . '</p>';
-      $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.', 
-      array('!download-link' => l(t('main jScrollPane page'), "http://jscrollpane.kelvinluck.com/index.html", 
-      array('attributes' => array('target' => '_blank'), 'fragment' => 'download')))) . "</p></div>";
+      $missing_1 = '<div class="messages error">';
+      $missing_1 .= "<p>" . t('<em>jquery.jscrollpane.min.js is missing</em>') . "</p>";
+      $missing_1 .= $download_link;
+      $missing_1 .= "</div>";
+
+      $missing_2 = '<div class="messages error">';
+      $missing_2 .= "<p>" . t('<em>jquery.jscrollpane.css is missing</em>') . "</p>";
+      $missing_2 .= $download_link;
+      $missing_2 .= "</div>";
 
       $lorem_ipsum = '<div class=demo-class style="overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;">';
       $lorem_ipsum .= "<p>" . t('Lorem Ipsum demo content') . "<br />";
