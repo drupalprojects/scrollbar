@@ -26,7 +26,7 @@ function scrollbar_help($path, $arg) {
               'fragment' => 'download',
             ),
           ),
-          )) . "</p></div>";
+        )) . "</p></div>";
 
       $missing_2 = '<div class="messages error"><p>' . t('<em>jquery.jscrollpane.css is missing</em>') . '</p>';
       $missing_2 .= "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
