@@ -21,8 +21,8 @@
         horizontialDragMaxWidth: settings.scrollbar.horizontialDragMaxWidth,
         verticalArrowPositions: settings.scrollbar.verticalArrowPositions,
         horizontialArrowPositions: settings.scrollbar.horizontialArrowPositions,
-        autoReinitialize: (settings.scrollbar.autoReinitialize === "true"),
-        autoReinitializeDelay: settings.scrollbar.autoReinitializeDelay
+        autoReinitialise: (settings.scrollbar.autoReinitialise === "true"),
+        autoReinitialiseDelay: settings.scrollbar.autoReinitialiseDelay
       });
     // Uncomment the line below for debugging.
     // console.log(settings.scrollbar);

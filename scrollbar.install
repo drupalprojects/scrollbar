@@ -10,23 +10,24 @@
  */
 function scrollbar_requirements($phase) {
   $requirements = array();
+  $t = get_t();
 
   if ($phase == 'runtime') {
-    $installed_1 = file_exists(libraries_get_path('scrollbar') . '/js/jquery.jscrollpane.min.js');
-    $installed_2 = file_exists(libraries_get_path('scrollbar') . '/css/jquery.jscrollpane.css');
+    $installed_1 = file_exists(libraries_get_path('jscrollpane') . '/jquery.jscrollpane.min.js');
+    $installed_2 = file_exists(libraries_get_path('jscrollpane') . '/jquery.jscrollpane.css');
 
     if (($installed_1)&&($installed_2)) {
       $requirements['scrollbar'] = array(
         'title' => 'scrollbar',
         'severity' => REQUIREMENT_OK,
-        'value' => get_t('scrollbar module is installed normally'),
+        'value' => $t('Scrollbar module has been installed normally'),
       );
     }
     else {
       $requirements['scrollbar'] = array(
         'title' => 'scrollbar',
         'severity' => REQUIREMENT_ERROR,
-        'value' => get_t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="@configuration-page">scrollbar Configuration page</a> for more details.', array('@configuration-page' => '/admin/config/user-interface/scrollbar')),
+        'value' => $t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="@configuration-page">scrollbar Configuration page</a> for more details.', array('@configuration-page' => '/admin/config/user-interface/scrollbar')),
       );
     }
     return $requirements;
