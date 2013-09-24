@@ -205,10 +205,10 @@ function scrollbar_admin_settings() {
     ),
     '#description' => t('Where the horizontial arrows should appear relative to the horizontial track.'),
   );
-  $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialize'] = array(
+  $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialise'] = array(
     '#type' => 'select',
     '#title' => t('Reinitialise scrollbar'),
-    '#default_value' => variable_get('scrollbar_autoReinitialize', 'false'),
+    '#default_value' => variable_get('scrollbar_autoReinitialise', 'false'),
     '#options' => array(
       'true' => t('true'),
       'false' => t('false'),
@@ -217,10 +217,10 @@ function scrollbar_admin_settings() {
     "<p>" . t('This can help with instances when the size of the content of the scrollpane (or the surrounding element) changes.') . "</p>" .
     "<p>" . t('However, it does involve an overhead of running a javascript function on a timer so it is recommended only to activate where necessary.') . "</p>",
   );
-  $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitializeDelay'] = array(
+  $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialiseDelay'] = array(
     '#type' => 'textfield',
     '#title' => t('Reinitialise Delay in ms'),
-    '#default_value' => variable_get('scrollbar_autoReinitializeDelay', 500),
+    '#default_value' => variable_get('scrollbar_autoReinitialiseDelay', 500),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
