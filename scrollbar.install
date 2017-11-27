@@ -10,11 +10,11 @@
  */
 function scrollbar_requirements($phase) {
   $requirements = array();
-  $t = get_t();
+  $t = 't';
 
   if ($phase == 'runtime') {
-    $installed_1 = file_exists(libraries_get_path('jscrollpane') . '/jquery.jscrollpane.min.js');
-    $installed_2 = file_exists(libraries_get_path('jscrollpane') . '/jquery.jscrollpane.css');
+    $installed_1 = file_exists(DRUPAL_ROOT . '/libraries/jscrollpane/jquery.jscrollpane.min.js');
+    $installed_2 = file_exists(DRUPAL_ROOT . '/libraries/jscrollpane/jquery.jscrollpane.css');
 
     if (($installed_1)&&($installed_2)) {
       $requirements['scrollbar'] = array(
@@ -27,7 +27,7 @@ function scrollbar_requirements($phase) {
       $requirements['scrollbar'] = array(
         'title' => 'scrollbar',
         'severity' => REQUIREMENT_ERROR,
-        'value' => $t('You must download jScrollPane files and upload them in the appropiate directories. See at <a href="@configuration-page">scrollbar Configuration page</a> for more details.', array('@configuration-page' => '/admin/config/user-interface/scrollbar')),
+        'value' => $t('You must download jScrollPane files and upload them in the appropriate directories. See at <a href="@configuration-page">scrollbar Configuration page</a> for more details.', array('@configuration-page' => '/admin/config/user-interface/scrollbar')),
       );
     }
     return $requirements;
@@ -38,7 +38,9 @@ function scrollbar_requirements($phase) {
  * Implements hook_uninstall().
  */
 function scrollbar_uninstall() {
-  db_delete('variable')
-  ->condition('name', 'scrollbar\_%', 'LIKE')
-  ->execute();
+  // @FIXME
+// db_delete('variable')
+//   ->condition('name', 'scrollbar\_%', 'LIKE')
+//   ->execute();
+
 }

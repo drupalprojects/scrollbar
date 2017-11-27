@@ -1,5 +1,0 @@
-name = Scrollbar
-description = Custom Scrollbar using jScollPane jQuery plugin.
-core = 7.x
-configure = admin/config/user-interface/scrollbar
-dependencies[] = libraries

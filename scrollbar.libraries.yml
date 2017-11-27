@@ -1,0 +1,9 @@
+scrollbar:
+  version: VERSION
+  js:
+    /libraries/jscrollpane/jquery.jscrollpane.min.js: {}
+    /libraries/jscrollpane/jquery.mousewheel.js: {}
+    /libraries/jscrollpane/mwheelIntent.js: {}
+    scrollbar.js: {}
+  css:
+    /libraries/jscrollpane/jquery.jscrollpane.css: {}

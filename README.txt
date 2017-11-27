@@ -1,4 +1,4 @@
-*Scrollbar Module*
+ *Scrollbar Module*
 
 About:
 ------
@@ -6,6 +6,7 @@ About:
 Scrollbar is a very simple Drupal module to implement the jScrollPane javascript
 functionality to your Drupal and make the css selectors get a custom jquery 
 scrollbar.
+
 jScrollPane is a cross-browser jQuery plugin by Kelvin Luck 
 (http://jscrollpane.kelvinluck.com) which converts a browser's default 
 scrollbars (on elements with a relevant overflow property) into an HTML 
@@ -14,13 +15,15 @@ structure which can be easily skinned with CSS.
 Installation:
 -------------
 
-A) Donwload the module and extract it to the modules directory.
+A) Download the module and extract it to the modules directory.
 B) Go to the jScrollPane download page at 
 http://jscrollpane.kelvinluck.com/index.html#download
 
 UPDATE: You can download all the required and complementary files from my 
 github repo at https://github.com/tplcom/jscrollpane/archive/master.zip 
-and upload them into libraries/jscrollpane folder (see below).
+and upload them into libraries/jscrollpane folder (see below). 
+
+libraries should be at the root level of your Drupal installation.
 
 [Required files]
 
@@ -37,9 +40,9 @@ libraries/jscrollpane folder.
 libraries/jscrollpane folder.
 
 C) On your theme css add one or more styles for the element you want to get the 
-custom jquery scrollbar.
+custom jQuery scrollbar.
 For example, if you want to apply the .jScrollPane() function to the 
-.field-name-body element just add this CSS
+.field-name-body element just add this CSS:
 
 .field-name-body {
   height: 200px;
@@ -59,5 +62,7 @@ the jScrollPage settings page (http://jscrollpane.kelvinluck.com/settings.html).
 Credits:
 --------
 
-Many thanks to Kelvin Luck (http://kelvinluck.com) for this excellant 
+Many thanks to Kelvin Luck (http://kelvinluck.com) for this excellent 
 jquery plugin.
+
+Ported to Drupal 8 by Dan Feidt ( https://drupal.org/u/hongpong )

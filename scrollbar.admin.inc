@@ -12,7 +12,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_element'] = array(
     '#type' => 'textfield',
     '#title' => t('Elements to get the jScrollPane function'),
-    '#default_value' => variable_get('scrollbar_element', '.field-name-body'),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_element'),
     '#size' => 100,
     '#required' => TRUE,
     '#maxlength' => 800,
@@ -21,7 +21,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_showArrows'] = array(
     '#type' => 'select',
     '#title' => t('Show arrows for scrollbar'),
-    '#default_value' => variable_get('scrollbar_showArrows', 'true'),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_showArrows'),
     '#options' => array(
       'true' => t('yes'),
       'false' => t('no'),
@@ -57,7 +57,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowScrollOnHover'] = array(
     '#type' => 'select',
     '#title' => t('Scroll element when mouse is over arrows'),
-    '#default_value' => variable_get('scrollbar_arrowScrollOnHover', 'false'),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_arrowScrollOnHover'),
     '#options' => array(
       'true' => t('true'),
       'false' => t('false'),
@@ -67,7 +67,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_mouseWheelSpeed'] = array(
     '#type' => 'textfield',
     '#title' => t('Mousewheel speed multiplier'),
-    '#default_value' => variable_get('scrollbar_mouseWheelSpeed', 10),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_mouseWheelSpeed'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -76,7 +76,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowButtonSpeed'] = array(
     '#type' => 'textfield',
     '#title' => t('Arrow buttons speed multiplier'),
-    '#default_value' => variable_get('scrollbar_arrowButtonSpeed', 10),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_arrowButtonSpeed'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -85,7 +85,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_arrowRepeatFreq'] = array(
     '#type' => 'textfield',
     '#title' => t('Arrow buttons Repeat frequency, in ms'),
-    '#default_value' => variable_get('scrollbar_arrowRepeatFreq', 100),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_arrowRepeatFreq'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -94,7 +94,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialGutter'] = array(
     '#type' => 'textfield',
     '#title' => t('Horizontial scrolling gap, in px'),
-    '#default_value' => variable_get('scrollbar_horizontialGutter', 5),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_horizontialGutter'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -103,7 +103,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalGutter'] = array(
     '#type' => 'textfield',
     '#title' => t('Vertical scrolling gap, in px'),
-    '#default_value' => variable_get('scrollbar_verticalGutter', 5),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_verticalGutter'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -112,7 +112,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMinHeight'] = array(
     '#type' => 'textfield',
     '#title' => t('Vertical Drag min height, in px'),
-    '#default_value' => variable_get('scrollbar_verticalDragMinHeight', 0),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_verticalDragMinHeight'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -121,7 +121,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMaxHeight'] = array(
     '#type' => 'textfield',
     '#title' => t('Vertical Drag max height, in px'),
-    '#default_value' => variable_get('scrollbar_verticalDragMaxHeight', 99999),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_verticalDragMaxHeight'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -130,7 +130,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMinWidth'] = array(
     '#type' => 'textfield',
     '#title' => t('Vertical Drag min width, in px'),
-    '#default_value' => variable_get('scrollbar_verticalDragMinWidth', 0),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_verticalDragMinWidth'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -139,7 +139,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalDragMaxWidth'] = array(
     '#type' => 'textfield',
     '#title' => t('Vertical Drag max width, in px'),
-    '#default_value' => variable_get('scrollbar_verticalDragMaxWidth', 99999),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_verticalDragMaxWidth'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -148,7 +148,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMinHeight'] = array(
     '#type' => 'textfield',
     '#title' => t('Horizontial Drag min height, in px'),
-    '#default_value' => variable_get('scrollbar_horizontialDragMinHeight', 0),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_horizontialDragMinHeight'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -157,7 +157,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMaxHeight'] = array(
     '#type' => 'textfield',
     '#title' => t('Horizontial Drag max height, in px'),
-    '#default_value' => variable_get('scrollbar_horizontialDragMaxHeight', 99999),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_horizontialDragMaxHeight'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -166,7 +166,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMinWidth'] = array(
     '#type' => 'textfield',
     '#title' => t('Horizontial Drag min width, in px'),
-    '#default_value' => variable_get('scrollbar_horizontialDragMinWidth', 0),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_horizontialDragMinWidth'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -175,7 +175,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialDragMaxWidth'] = array(
     '#type' => 'textfield',
     '#title' => t('Horizontial Drag max width, in px'),
-    '#default_value' => variable_get('scrollbar_horizontialDragMaxWidth', 99999),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_horizontialDragMaxWidth'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
@@ -184,7 +184,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_verticalOptions']['scrollbar_verticalArrowPositions'] = array(
     '#type' => 'select',
     '#title' => t('Show the vertical arrows relative to the vertical track'),
-    '#default_value' => variable_get('scrollbar_verticalArrowPositions', 'split'),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_verticalArrowPositions'),
     '#options' => array(
       'split' => t('split'),
       'before' => t('before'),
@@ -196,7 +196,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_horizontialOptions']['scrollbar_horizontialArrowPositions'] = array(
     '#type' => 'select',
     '#title' => t('Show the horizontial arrows relative to the horizontial track'),
-    '#default_value' => variable_get('scrollbar_horizontialArrowPositions', 'split'),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_horizontialArrowPositions'),
     '#options' => array(
       'split' => t('split'),
       'before' => t('before'),
@@ -208,7 +208,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialise'] = array(
     '#type' => 'select',
     '#title' => t('Reinitialise scrollbar'),
-    '#default_value' => variable_get('scrollbar_autoReinitialise', 'false'),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_autoReinitialise'),
     '#options' => array(
       'true' => t('true'),
       'false' => t('false'),
@@ -220,7 +220,7 @@ function scrollbar_admin_settings() {
   $form['scrollbar_advancedOptions']['scrollbar_generalOptions']['scrollbar_autoReinitialiseDelay'] = array(
     '#type' => 'textfield',
     '#title' => t('Reinitialise Delay in ms'),
-    '#default_value' => variable_get('scrollbar_autoReinitialiseDelay', 500),
+    '#default_value' => \Drupal::config('scrollbar.settings')->get('scrollbar_autoReinitialiseDelay'),
     '#size' => 5,
     '#maxlength' => 5,
     '#element_validate' => array('scrollbar_validate_integer_positive_zero'),
