@@ -5,205 +5,32 @@
  * Scrollbar module help, settings and configuration menu
  */
 
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
 /**
  * Implements hook_help().
+ *
+ * @param $route_name
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ * @return string
  */
-function scrollbar_help($path, $arg) {
-  switch ($path) {
-    case 'admin/config/user-interface/scrollbar':
-
-      $basepath = libraries_get_path('jscrollpane');
-
-      $installed_1 = file_exists($basepath . '/jquery.jscrollpane.min.js');
-      $installed_2 = file_exists($basepath . '/jquery.jscrollpane.css');
-
-      $download_link = "<p>" . t('Please go to !download-link and download this file into libraries/jscrollpane folder.',
-        array(
-          '!download-link' => \Drupal::l(t('main jScrollPane page'), \Drupal\Core\Url::fromUri("http://jscrollpane.kelvinluck.com/index.html")),
-        )
-      ) . "</p>";
-
-      $missing_1 = '<div class="messages error">';
-      $missing_1 .= "<p>" . t('<em>jquery.jscrollpane.min.js is missing</em>') . "</p>";
-      $missing_1 .= $download_link;
-      $missing_1 .= "</div>";
-
-      $missing_2 = '<div class="messages error">';
-      $missing_2 .= "<p>" . t('<em>jquery.jscrollpane.css is missing</em>') . "</p>";
-      $missing_2 .= $download_link;
-      $missing_2 .= "</div>";
-
-      $lorem_ipsum = '<div class=demo-class style="overflow:auto; text-align:right; padding-right:20px; height:200px; width:200px;">';
-      $lorem_ipsum .= "<p>" . t('Lorem Ipsum demo content') . "<br />";
-      $lorem_ipsum .= t('Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto 
-      beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
-      fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, 
-      qui dolorem ipsum quia dolor sit amet, consectetur.');
-      $lorem_ipsum .= "</div>";
-
-      if ($installed_1 && $installed_2) {
-        return $lorem_ipsum;
-      }
-      elseif (!$installed_1 && $installed_2) {
-        return $missing_1;
-      }
-      elseif ($installed_1 && !$installed_2) {
-        return $missing_2;
-      }
-      elseif (!$installed_1 && !$installed_2) {
-        return $missing_1 . "<br />" . $missing_2;
-      }
-  }
-}
-
-/**
- * Implements hook_init().
- */
-function scrollbar_init() {
-
-  // Check if necessary files exist.
-  $basepath = libraries_get_path('jscrollpane');
-  $basepath_mod = drupal_get_path('module', 'scrollbar');
-
-  $installed_1 = file_exists($basepath . '/jquery.jscrollpane.min.js');
-  $installed_2 = file_exists($basepath . '/jquery.jscrollpane.css');
-  $installed_3 = file_exists($basepath . '/jquery.mousewheel.js');
-  $installed_4 = file_exists($basepath . '/mwheelIntent.js');
-
-  // Add mousewheel and mwheelIntent if they exist.
-  if ($installed_3) {
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_js($basepath . '/jquery.mousewheel.js');
-
-  }
-  if ($installed_4) {
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_js($basepath . '/mwheelIntent.js');
-
-  }
-
-  // Add required CSS for scrollbar.
-  if ($installed_2) {
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_css($basepath . '/jquery.jscrollpane.css');
-
-  }
-
-  if ($installed_1) {
-    // Add jquery ui library from Drupal core.
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_library('system', 'ui');
-
-
-    // Add jquery.jscrollpane.min.js.
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_js($basepath . '/jquery.jscrollpane.min.js');
-
-
-    // Create settings for scrollbar.js.
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_js(
-//       array(
-//         'scrollbar' =>
-//         array(
-//           'element'                   => variable_get('scrollbar_element', '.field-name-body'),
-//           'showArrows'                => variable_get('scrollbar_showArrows', TRUE),
-//           'mouseWheelSpeed'           => variable_get('scrollbar_mouseWheelSpeed', 10),
-//           'arrowButtonSpeed'          => variable_get('scrollbar_arrowButtonSpeed', 10),
-//           'arrowRepeatFreq'           => variable_get('scrollbar_arrowRepeatFreq', 100),
-//           'horizontialGutter'         => variable_get('scrollbar_horizontialGutter', 4),
-//           'verticalGutter'            => variable_get('scrollbar_verticalGutter', 4),
-//           'verticalDragMinHeight'     => variable_get('scrollbar_verticalDragMinHeight', 0),
-//           'verticalDragMaxHeight'     => variable_get('scrollbar_verticalDragMaxHeight', 99999),
-//           'verticalDragMinWidth'      => variable_get('scrollbar_verticalDragMinWidth', 0),
-//           'verticalDragMaxWidth'      => variable_get('scrollbar_verticalDragMaxWidth', 99999),
-//           'horizontialDragMinHeight'  => variable_get('scrollbar_horizontialDragMinHeight', 0),
-//           'horizontialDragMaxHeight'  => variable_get('scrollbar_horizontialDragMaxHeight', 99999),
-//           'horizontialDragMinWidth'   => variable_get('scrollbar_horizontialDragMinWidth', 0),
-//           'horizontialDragMaxWidth'   => variable_get('scrollbar_horizontialDragMaxWidth', 99999),
-//           'arrowScrollOnHover'        => variable_get('scrollbar_arrowScrollOnHover', TRUE),
-//           'verticalArrowPositions'    => variable_get('scrollbar_verticalArrowPositions', 'split'),
-//           'horizontialArrowPositions' => variable_get('scrollbar_horizontialArrowPositions', 'split'),
-//           'autoReinitialise'          => variable_get('scrollbar_autoReinitialise', FALSE),
-//           'autoReinitialiseDelay'     => variable_get('scrollbar_autoReinitialiseDelay', 500),
-//         ),
-//       ), 'setting'
-//     );
-
-
-    // Add scrollbar.js with above settings.
-    // @FIXME
-// The Assets API has totally changed. CSS, JavaScript, and libraries are now
-// attached directly to render arrays using the #attached property.
-// 
-// 
-// @see https://www.drupal.org/node/2169605
-// @see https://www.drupal.org/node/2408597
-// drupal_add_js($basepath_mod . '/scrollbar.js');
-
-  }
-}
-
-/**
- * Implements hook_menu().
- */
-function scrollbar_menu() {
-  $items['admin/config/user-interface/scrollbar'] = array(
-    'title' => 'Scrollbar',
-    'description' => 'Adjust the settings of the scrollbar module',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('scrollbar_admin_settings'),
-    'access arguments' => array('administer site configuration'),
-    'file' => 'scrollbar.admin.inc',
-    'type' => MENU_NORMAL_ITEM,
-  );
-  return $items;
-}
-
-/**
- * Function to validate a positive integer value or zero value.
- */
-function scrollbar_validate_integer_positive_zero($element, &$form_state) {
-  $value = $element['#value'];
-  if ($value !== '' && (!is_numeric($value) || intval($value) != $value || $value < 0)) {
-    form_error($element, t('%name must be a positive integer or zero.', array('%name' => $element['#title'])));
+function scrollbar_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.scrollbar':
+      
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module allows for integration of the jScrollpane jQuery plugin into Drupal.</br>') . '</p>';
+      $output .= '<h3>' . t('Configuration') . '</h3>';
+      $output .= '<p>' . t('Go to "Configuration" -> "User Interface" -> "Scrollbar" to find all the configuration options.') . '</p>';
+      $output .= '<h3>' . t('Settings') . '</h3>';
+      $output .= '<p>' . t('See more details about jScrollPane configuration at the official documentation at <a href="@plugin_url">jScrollPane homepage</a>.',
+          [
+            "@plugin_url" => "http://jscrollpane.kelvinluck.com/index.html#examples",
+          ]
+        );
+      
+      return $output;
   }
 }
 
@@ -214,22 +41,23 @@ function scrollbar_validate_integer_positive_zero($element, &$form_state) {
 function scrollbar_page_attachments(&$page) {
   $settings = [];
   $config = \Drupal::config('scrollbar.settings');
+  
   if ($config->get('enable')) {
     $settings['element'] = $config->get('element');
     $settings['showArrows'] = $config->get('showArrows');
-    $settings['maintainPosition'] = $config->get('maintainPosition'); //new
-    $settings['stickToBottom'] = $config->get('stickToBottom'); //new
-    $settings['stickToRight'] = $config->get('stickToRight'); //new
-    $settings['contentWidth'] = $config->get('contentWidth'); //new
-    $settings['animateScroll'] = $config->get('animateScroll'); //new
-    $settings['animateDuration'] = $config->get('animateDuration'); //new
-    $settings['animateEase'] = $config->get('animateEase'); //new
-    $settings['hijackInternalLinks'] = $config->get('hijackInternalLinks'); //new
-    $settings['enableKeyboardNavigation'] = $config->get('enableKeyboardNavigation'); //new
-    $settings['hideFocus'] = $config->get('hideFocus'); //new
-    $settings['clickOnTrack'] = $config->get('clickOnTrack'); //new
-    $settings['trackClickSpeed'] = $config->get('trackClickSpeed'); //new
-    $settings['trackClickRepeatFreq'] = $config->get('trackClickRepeatFreq'); //new
+    $settings['maintainPosition'] = $config->get('maintainPosition');
+    $settings['stickToBottom'] = $config->get('stickToBottom');
+    $settings['stickToRight'] = $config->get('stickToRight');
+    $settings['contentWidth'] = $config->get('contentWidth');
+    $settings['animateScroll'] = $config->get('animateScroll');
+    $settings['animateDuration'] = $config->get('animateDuration');
+    $settings['animateEase'] = $config->get('animateEase');
+    $settings['hijackInternalLinks'] = $config->get('hijackInternalLinks');
+    $settings['enableKeyboardNavigation'] = $config->get('enableKeyboardNavigation');
+    $settings['hideFocus'] = $config->get('hideFocus');
+    $settings['clickOnTrack'] = $config->get('clickOnTrack');
+    $settings['trackClickSpeed'] = $config->get('trackClickSpeed');
+    $settings['trackClickRepeatFreq'] = $config->get('trackClickRepeatFreq');
 
     $settings['mouseWheelSpeed'] = $config->get('mouseWheelSpeed');
     $settings['arrowButtonSpeed'] = $config->get('arrowButtonSpeed');
@@ -251,6 +79,7 @@ function scrollbar_page_attachments(&$page) {
     $settings['autoReinitialiseDelay'] = $config->get('autoReinitialiseDelay');
 
     $page['#attached']['drupalSettings']['scrollbar'] = $settings;
+    $page['#attached']['library'][] = 'scrollbar/jscrollpane';
     $page['#attached']['library'][] = 'scrollbar/scrollbar';
   }
 }

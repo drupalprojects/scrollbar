@@ -12,57 +12,48 @@ jScrollPane is a cross-browser jQuery plugin by Kelvin Luck
 scrollbars (on elements with a relevant overflow property) into an HTML 
 structure which can be easily skinned with CSS.
 
+
 Installation:
 -------------
 
-A) Download the module and extract it to the modules directory.
-B) Go to the jScrollPane download page at 
-http://jscrollpane.kelvinluck.com/index.html#download
+- Download and install the module.
+- Download all the required and complementary files from the github repo at github so they appear
+under the libraries/jscrollpane folder.
 
-UPDATE: You can download all the required and complementary files from my 
-github repo at https://github.com/tplcom/jscrollpane/archive/master.zip 
-and upload them into libraries/jscrollpane folder (see below). 
 
-libraries should be at the root level of your Drupal installation.
+Theme settings
+---------------
 
-[Required files]
+On your theme css add one or more styles for the element you want to get the custom jQuery
+scrollbar.
 
-1. Download jquery.jscrollpane.min.js and place it into 
-libraries/jscrollpane folder.
-2. Download jquery.jscrollpane.css and place it into 
-libraries/jscrollpane folder.
+For example, if you want to apply the .jScrollPane() function to the .field--name-body element
+just add this piece on your theme CSS
 
-[Optional files]
-
-3. Download jquery.mousewheel.js and place it into 
-libraries/jscrollpane folder.
-4. Download mwheelIntent.js and place it into 
-libraries/jscrollpane folder.
-
-C) On your theme css add one or more styles for the element you want to get the 
-custom jQuery scrollbar.
-For example, if you want to apply the .jScrollPane() function to the 
-.field-name-body element just add this CSS:
-
-.field-name-body {
+.field--name-body {
   height: 200px;
   overflow: auto;
 }
 
-For more examples please refer to 
-http://jscrollpane.kelvinluck.com/index.html#examples
+For more examples of using this library please refer to the official manual at
+http://jscrollpane.kelvinluck.com/index.html#examples,
 
-Configuration:
+
+Configuration
 --------------
 
-A) Go to admin/config/user-interface/scrollbar and configure as you want.
-For more information on how to use the jScrollPane() parameters please refer to
-the jScrollPage settings page (http://jscrollpane.kelvinluck.com/settings.html).
+Go to admin/config/user-interface/scrollbar and configure as you want.
 
-Credits:
+For more information on how to use the jScrollPane() parameters please refer to the jScrollPane settings page.
+
+Credits
 --------
 
-Many thanks to Kelvin Luck (http://kelvinluck.com) for this excellent 
-jquery plugin.
+Unlimited thanks to Kelvin Luck for this excellent jQuery plugin.
 
-Ported to Drupal 8 by Dan Feidt ( https://drupal.org/u/hongpong )
+
+Maintainers
+-------------
+
+TheodorosPloumis (https://www.drupal.org/u/theodorosploumis)
+Dan Feidt (https://www.drupal.org/u/hongpong)

@@ -9,7 +9,7 @@ verticalDragMinHeight: 0
 verticalDragMaxHeight: 99999
 horizontalDragMinWidth: 0
 horizontalDragMaxWidth: 99999
-# contentWidth: undefined
+contentWidth: ''
 animateScroll: false
 animateDuration: 300
 animateEase: 'Linear'

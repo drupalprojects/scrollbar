@@ -1,14 +1,17 @@
 (function ($, Drupal, drupalSettings) {
 
-  'use strict';
+  "use strict";
 
   Drupal.behaviors.scrollbar = {
+
     attach: function (context, settings) {
+
       var $element = drupalSettings.scrollbar.element;
-      $($element + ", .demo-class").jScrollPane({
+
+      $($element).jScrollPane({
         // jScrollpane needs clear true or false, not quoted text so we add this if statement
-        showArrows: (drupalSettings.scrollbar.showArrows === 'true'),
-        arrowScrollOnHover: (drupalSettings.scrollbar.arrowScrollOnHover === 'true'),
+        showArrows: ("true" === drupalSettings.scrollbar.showArrows),
+        arrowScrollOnHover: ("true" === drupalSettings.scrollbar.arrowScrollOnHover),
         maintainPosition: drupalSettings.scrollbar.maintainPosition,
         stickToBottom: drupalSettings.scrollbar.stickToBottom,
         stickToRight: drupalSettings.scrollbar.stickToRight,
@@ -22,7 +25,6 @@
         clickOnTrack: drupalSettings.scrollbar.clickOnTrack,
         trackClickSpeed: drupalSettings.scrollbar.trackClickSpeed,
         trackClickRepeatFreq: drupalSettings.scrollbar.trackClickRepeatFreq,
-
         mouseWheelSpeed: drupalSettings.scrollbar.mouseWheelSpeed,
         arrowButtonSpeed: drupalSettings.scrollbar.arrowButtonSpeed,
         arrowRepeatFreq: drupalSettings.scrollbar.arrowRepeatFreq,
@@ -38,11 +40,13 @@
         horizontalDragMaxWidth: drupalSettings.scrollbar.horizontalDragMaxWidth,
         verticalArrowPositions: drupalSettings.scrollbar.verticalArrowPositions,
         horizontalArrowPositions: drupalSettings.scrollbar.horizontialArrowPositions,
-        autoReinitialise: (drupalSettings.scrollbar.autoReinitialise === "true"),
+        autoReinitialise: ("true" === drupalSettings.scrollbar.autoReinitialise),
         autoReinitialiseDelay: drupalSettings.scrollbar.autoReinitialiseDelay
+
       });
-    // Uncomment the line below for debugging.
-    // console.log(settings.scrollbar);
+      // Want to get the settings?
+      // On browser console type: "drupalSettings.scrollbar".
     }
   };
+
 })(jQuery, Drupal, drupalSettings);
