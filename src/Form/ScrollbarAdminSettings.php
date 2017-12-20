@@ -53,12 +53,12 @@ class ScrollbarAdminSettings extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('scrollbar.settings');
 
-    $form['enable'] = array(
+    $form['enable'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable scrollbar'),
       '#description' => $this->t('Enable scrollbar + jscrollpane functionality on your site.'),
       '#default_value' => $config->get('enable'),
-    );
+    ];
     $form['element'] = [
       '#type' => 'textfield',
       '#title' => t('Elements to get the jScrollPane function'),
